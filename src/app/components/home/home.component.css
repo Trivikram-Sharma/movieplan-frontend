@@ -1,0 +1,41 @@
+#home-greeting{
+    text-align: center;
+}
+
+.carousel-container{
+    text-align: center;
+    font-size: 20px;
+}
+.login{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.login form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 20px;
+    font-variant-caps: all-small-caps;
+}
+
+.login form .formgroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px;
+    padding: 15px;
+    align-items: center;
+    font-size-adjust: none;
+}
+
+.submit {
+    padding: 2%;
+    font-size: 20px;
+    font-variant-caps: all-small-caps;
+    font-weight: lighter;
+    background-color: lightgreen;
+    color: black;
+
+}

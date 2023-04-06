@@ -1,0 +1,10 @@
+h3 {
+    text-align: center;
+}
+dl{
+    text-align: center;
+}
+dt {
+    border-left: 5px solid black;
+    padding: 0px;
+}

@@ -1,0 +1,81 @@
+body{
+    background-color: gold;
+}
+nav {
+    display: block;
+    background-color: darkgreen;
+    color: aquamarine;
+    font-family: tahoma serif;
+    font-variant-caps: all-small-caps;
+}
+
+nav .icon {
+    font-size: 35px;
+}
+
+.dropdown {
+    position: relative;
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: darkcyan;
+    color: yellow;
+    min-width: 250px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.dropdown-content ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+    font-size: 28px;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+
+nav ul {
+    list-style-type: none;
+    font-size: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+nav ul li a {
+    color:yellow;
+    text-decoration: none;
+}
+
+nav ul li a:hover{
+    background-color: wheat;
+    color: brown;
+    text-decoration: none;
+}
+
+.userinfo-active{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    font-size: 20px;
+}
+
+.userinfo-inactive{
+    display: none;
+}
+
+footer{
+    text-align: center;
+    display: block;
+    background-color: red;
+    color: cyan;
+}

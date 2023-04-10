@@ -5,6 +5,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
+  {path:"", redirectTo:"home",pathMatch:"full"},
   {path:"home", component:HomeComponent},
   {path: "about", component: AboutusComponent},
   {path:"contact", component: ContactusComponent}

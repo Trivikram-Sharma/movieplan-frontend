@@ -8,21 +8,21 @@
 <hr />
 <hr />
 <div class="login">
-    <form method="post">
-        <div class="formgroup">
+    <form #loginForm="ngForm" method="post" (ngSubmit)="submit(loginForm)">
+        <div class="form-group">
         <label>UserName:</label>
-        <input type="text" placeholder="Enter UserName">
+        <input type="text" name="userName" class="form-control" ngModel placeholder="Enter UserName" required>
         </div>
-        <div class="formgroup">
+        <div class="form-group">
         <label>PassWord:</label>
-        <input type="password" placeholder="Enter Password">
+        <input type="password" name="password" class="form-control" ngModel placeholder="Enter Password" required>
         </div> <br>
-        <div class="formgroup">
+        <div class="form-group">
             Are you admin?
-            <input type="radio" name="adminrole" id="adrole1"> Yes
-            <input type="radio" name="adminrole" id="adrole2"> No
+            <input type="radio" name="adminrole" class="form-control" ngModel id="adrole1" value="Yes" required> Yes
+            <input type="radio" name="adminrole" class="form-control" ngModel id="adrole2" value="No" required> No
         </div>
-        <input type="submit" class="submit" value="Sign In">
+        <button type="submit" class="submitbutton">Sign In</button>
 
     </form>
 

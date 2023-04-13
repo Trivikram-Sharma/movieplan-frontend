@@ -12,3 +12,8 @@
      justify-content:flex-end;
      background-color: yellow;
  }
+
+ .default-text{
+    background-color: yellow;
+    color: blueviolet
+ }

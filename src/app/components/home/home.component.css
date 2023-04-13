@@ -39,3 +39,22 @@
     color: black;
 
 }
+.login-error{
+    text-align: center;
+}
+.username-error{
+    display: block;
+    text-align: center;
+    background-color: wheat;
+    color: brown;
+}
+
+.password-error{
+    display: block;
+    text-align: center;
+    background-color: wheat;
+    color: brown;
+}
+.register-link{
+    color: royalblue;
+}

@@ -1,5 +1,5 @@
 
-<div *ngIf="loggedin">
+<div *ngIf="loggedin else default">
     <div class="dropdown">
     Hello {{userName}}
     <div class="dropdown-content">
@@ -7,3 +7,8 @@
     </div>
     </div>
 </div>
+<ng-template #default>
+    <div class="default-text">
+    <a routerLink="/register">SignUp</a> / <a routerLink="/home">SignIn</a>
+    </div>
+</ng-template>

@@ -5,12 +5,22 @@
  .dropdown-content{
      display: none;
  }
+ .dropdown-content ul {
+    list-style-type: none;
+ }
+ .dropdown-content ul li a:hover {
+    background-color: crimson;
+    color: white;
+ }
  
  .dropdown:hover .dropdown-content{
      display: flex;
      flex-direction: column;
      justify-content:flex-end;
      background-color: yellow;
+     max-width: 200px;
+     padding-left: 0px;
+     margin-left: 0px;
  }
 
  .default-text{

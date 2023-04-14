@@ -19,8 +19,8 @@ export class LoginStatusComponent implements OnInit {
   currentAdmin:Admin = this.loginService.currentAdmin;
 
   loggedin=this.currentUser!=null || this.currentAdmin!=null;
-  userName() {
-    return this.currentUser.userName; 
+  get userName() {
+    return this.currentUser.userName;
   }
 
 
@@ -28,11 +28,14 @@ export class LoginStatusComponent implements OnInit {
     if(this.currentUser==null && this.currentAdmin!=null) {
       let resp = this.loginService.adminLogout(this.currentAdmin);
       resp.subscribe((data:any) => this.message = data);
+      this.loginService.currentAdmin = null;
     }
     else if(this.currentUser!=null && this.currentAdmin==null) {
       let resp = this.loginService.userLogout(this.currentUser);
       resp.subscribe((data:any) => this.message = data);
+      this.loginService.currentUser = null;
     }
+    this.loginService.updateLoggedIn(false);
   }
 
 }

@@ -8,13 +8,16 @@ import { User } from 'src/interfaces/user';
   providedIn: 'root'
 })
 export class LoginService {
-
+  
+  currentUser:any;
+  currentAdmin:any;
   
   constructor(private http:HttpClient) {
     this.currentUser = null;
+    this.currentAdmin = null;
    }
-  currentUser:any;
-  currentAdmin:any;
+
+  loggedin:boolean = false;
   userLogin(user:User) {
     return this.http.post(userapi.signIn,user,{responseType:'text' as 'json'})
   }
@@ -29,6 +32,10 @@ export class LoginService {
 
   adminLogout(admin:Admin) {
     return this.http.post(adminapi.adminLogout,admin,{responseType: 'text' as 'json'})
+  }
+
+  updateLoggedIn(status:boolean){
+    this.loggedin = status;
   }
 
 }

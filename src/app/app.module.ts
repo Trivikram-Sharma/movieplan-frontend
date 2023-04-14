@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginStatusComponent } from './components/login-status/login-status.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     AboutusComponent,
     ContactusComponent,
     LoginStatusComponent,
-    RegisterComponent
+    RegisterComponent,
+    ChangepasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -46,6 +46,9 @@ export class HomeComponent implements OnInit {
         let resp = this.loginService.userLogin(user);
         resp.subscribe((data:any) => this.message = data);
         this.loginService.currentUser = this.message;
+        if(this.loginService.currentUser!=null) {
+          this.loginService.updateLoggedIn(true);
+        }
       }
       else if(this.adminrole?.value=="No") {
         let adminuser:Admin = {
@@ -56,6 +59,9 @@ export class HomeComponent implements OnInit {
         let resp = this.loginService.adminLogin(adminuser);
         resp.subscribe((data:any) => this.message = data);
         this.loginService.currentAdmin = this.message;
+        if(this.loginService.currentAdmin!=null) {
+          this.loginService.updateLoggedIn(true);
+        }
       }
       else {
         alert("Something went wrong")

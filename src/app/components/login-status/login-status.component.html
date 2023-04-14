@@ -3,7 +3,10 @@
     <div class="dropdown">
     Hello {{userName}}
     <div class="dropdown-content">
-        <a href="#" (click)="logout()">LogOut</a>
+        <ul>
+        <li><a href="#" (click)="logout()">LogOut</a></li>
+        <li><a href="#" routerLink="/changepassword">Change Password</a></li>
+        </ul>
     </div>
     </div>
 </div>

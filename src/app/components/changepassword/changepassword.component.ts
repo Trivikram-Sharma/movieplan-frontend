@@ -16,7 +16,7 @@ export class ChangepasswordComponent implements OnInit {
   //currentAdmin:Admin = this.loginService.currentAdmin;
   ngOnInit(): void {
   }
-
+  loggedin:boolean = this.loginService.loggedin;
 
   changePasswordForm = new FormGroup(
     {

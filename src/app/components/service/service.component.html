@@ -1,0 +1,24 @@
+<div class="service-container" *ngIf="!loggedin else defaultcontent">
+    <div class="sidebar">
+        <ul>
+           <li>Tickets</li> 
+           <li>Movies</li> 
+           <li>Search History</li> 
+           <li>Purchase History</li> 
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <ul>
+            <li>Movie 1</li>
+            <li>Movie 2</li>
+            <li>Movie 3</li>
+            <li>Movie 4</li>
+            <li>Movie 5</li>
+        </ul>
+    </div>
+</div>
+
+<ng-template #defaultcontent>
+    Please Login after clicking 'Home' to check out exclusive services like Ticket booking, Movie catalog, Search History and Purchase History etc.
+</ng-template>

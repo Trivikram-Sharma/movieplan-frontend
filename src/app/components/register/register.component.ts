@@ -12,7 +12,9 @@ export class RegisterComponent implements OnInit {
 
   registerForm = new FormGroup({
     username: new FormControl('', Validators.required),
-    userpassword: new FormControl('',Validators.required)
+    userpassword: new FormControl('',Validators.required),
+    name: new FormControl('', Validators.required ),
+    email: new FormControl('', Validators.required)
     }
   );
   message:any;
@@ -23,6 +25,12 @@ export class RegisterComponent implements OnInit {
   }
   get userpassword(){
     return this.registerForm.get('userpassword')
+  }
+  get name(){
+    return this.registerForm.get('name')
+  }
+  get email(){
+    return this.registerForm.get('email')
   }
   ngOnInit(): void {
   }
@@ -36,7 +44,9 @@ export class RegisterComponent implements OnInit {
       let user:User = {
         userName: <String>this.username?.value,
         password: <String>this.userpassword?.value,
-        status: "inactive"
+        status: "inactive",
+        name: <String>this.name?.value,
+        email: <String>this.email?.value
       };
       let resp = this.registrationService.signUp(user);
       resp.subscribe((data:any) => this.message = data);

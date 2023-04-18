@@ -1,0 +1,20 @@
+.service-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.sidebar{
+    display: flex;
+    margin: 0px;
+    border:0px;
+    background-color: darkolivegreen;
+    width: 20%;
+
+}
+.main-content{
+    display: flex;
+    width: 80%;
+    justify-content: space-evenly;
+    background-color: white;
+}

@@ -17,7 +17,9 @@ export class LoginService {
     this.currentAdmin = null;
    }
 
-  loggedin:boolean = false;
+  userLoggedIn:boolean = false;
+  adminLoggedIn:boolean = false;
+  loggedin:boolean = this.userLoggedIn || this.adminLoggedIn;
   userLogin(user:User) {
     return this.http.post(userapi.signIn,user,{responseType:'text' as 'json'})
   }
@@ -38,4 +40,12 @@ export class LoginService {
     this.loggedin = status;
   }
 
+  updateUserLoggedIn(status:boolean) {
+    this.userLoggedIn = status;
+  }
+
+  
+  updateAdminLoggedIn(status:boolean) {
+    this.adminLoggedIn = status;
+  }
 }

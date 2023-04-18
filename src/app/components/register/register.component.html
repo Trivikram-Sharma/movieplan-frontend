@@ -1,17 +1,37 @@
 <form [formGroup]="registerForm" (ngSubmit)="submit()">
     <div class="form-group">
-        <label for="username">UserName</label>
-        <input type="text" formControlName="username" placeholder="enter the username of your choice" required class="form-control">
-        <div class="username-error" *ngIf="username?.touched && username?.invalid">
-            UserName should not be empty!
-        </div>
-        <label for="userpassword">Password</label>
-        <input type="password" formControlName="userpassword" placeholder="Choose and enter password" required class="form-control">
-        <div class="userpassword-error" *ngIf="userpassword?.touched && userpassword?.invalid">
-            Password should not be empty!
-        </div>
-        <button type="submit">Register</button>
+        <label for="username">UserName:</label>
+        <input type="text" formControlName="username" placeholder="Enter the username of your choice" required class="form-control">
     </div>
+    <div class="username-error" *ngIf="username?.touched && username?.invalid">
+        UserName should not be empty!
+    </div>
+    <div class="form-group">
+        <label for="userpassword">Password:</label>
+        <input type="password" formControlName="userpassword" placeholder="Choose and enter password" required class="form-control">
+    </div>
+    <div class="userpassword-error" *ngIf="userpassword?.touched && userpassword?.invalid">
+        Password should not be empty!
+    </div>
+    <div class="form-group">
+        <label for="name">
+            Name :
+        </label>
+        <input type="text" formControlName = "name" class="form-control" required placeholder="Please enter your name">
+    </div>
+    <div class="name-error" *ngIf="name?.touched && name?.invalid">
+        Name should not be empty!
+    </div>
+    <div class="form-group">
+        <label for="email">
+            Email :
+        </label>
+        <input type="email" formControlName = "email" class="form-control" required placeholder="Please enter your email">
+    </div>
+    <div class="email-error" *ngIf="email?.touched && email?.invalid">
+        Email Should not be empty!
+    </div>
+        <button type="submit">Register</button>
 </form>
 <div class="register-form-error" *ngIf="formError">
     The registration failed as the  userId {{username}} is not unique and is already present and used! Please try again!

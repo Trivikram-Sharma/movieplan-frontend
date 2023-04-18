@@ -5,6 +5,10 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+import { ServiceComponent } from './components/service/service.component';
+import { TicketListComponent } from './components/ticket-list/ticket-list.component';
+import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { PurchaseListComponent } from './components/purchase-list/purchase-list.component';
 
 const routes: Routes = [
   {path:"", redirectTo:"home",pathMatch:"full"},
@@ -12,7 +16,11 @@ const routes: Routes = [
   {path: "about", component: AboutusComponent},
   {path:"contact", component: ContactusComponent},
   {path:"register",component:RegisterComponent},
-  {path:"changepassword",component:ChangepasswordComponent}
+  {path:"changepassword",component:ChangepasswordComponent},
+  {path:"servicesList", component: ServiceComponent},
+  {path:"ticketList",component:TicketListComponent},
+  {path:"movieList",component:MovieListComponent},
+  {path:"purchaseHistory",component:PurchaseListComponent}
 ];
 
 @NgModule({

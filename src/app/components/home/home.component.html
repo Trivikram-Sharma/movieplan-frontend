@@ -1,13 +1,18 @@
 
 <h1 id="home-greeting">Welcome To MoviePlan App!</h1>
 
-<div class="carousel-container">
+<div class="carousel-container" *ngIf="!loggedin">
     To avail exclusive services, such as book movie tickets, check current movies and see purchase/ search history,
     please login below and click on 'SERVICES' shown above.
 </div>
+<div class="loggedin-home" *ngIf="loggedin">
+    <h3>
+    Click on 'SERVICES' shown above to check on 
+    new movies/catalog/purchase history etc.</h3>
+</div>
 <hr />
 <hr />
-<div class="login">
+<div class="login" *ngIf="!loggedin">
     <form [formGroup]="loginForm" (ngSubmit)="submit()">
         <div class="form-group">
         <label>UserName:</label>
@@ -23,7 +28,7 @@
         <div class="password-error" *ngIf="password?.touched && password?.invalid">
             Password cannot be empty
         </div>
-        <div class="form-group" formGroupName="adminrolegroup">
+        <div class="form-group" formGroupName="adminroleGroup">
             Are you admin?
             <input type="radio" formControlName="adminrole" class="form-control" id="adrole1" value="Yes" required> Yes
             <input type="radio" formControlName="adminrole" class="form-control" id="adrole2" value="No" required> No

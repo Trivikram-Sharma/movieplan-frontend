@@ -35,9 +35,10 @@ export class HomeComponent implements OnInit {
   get adminrole() {
     return this.loginForm.get('adminroleGroup')?.get('adminrole')
   }
+  loggedin:boolean = this.loginService.loggedin;
   submit(){
     if(!this.loginForm.invalid){
-      if(this.adminrole?.value=="Yes") {
+      if(this.adminrole?.value=="No") {
         let user:User = {
           userName: <String>this.userName?.value,
           password: <String>this.password?.value,
@@ -47,10 +48,10 @@ export class HomeComponent implements OnInit {
         resp.subscribe((data:any) => this.message = data);
         this.loginService.currentUser = this.message;
         if(this.loginService.currentUser!=null) {
-          this.loginService.updateLoggedIn(true);
+          this.loginService.updateUserLoggedIn(true);
         }
       }
-      else if(this.adminrole?.value=="No") {
+      else if(this.adminrole?.value=="Yes") {
         let adminuser:Admin = {
           adminUserName: <String>this.userName?.value,
           adminPassword: <String>this.password?.value,
@@ -60,7 +61,7 @@ export class HomeComponent implements OnInit {
         resp.subscribe((data:any) => this.message = data);
         this.loginService.currentAdmin = this.message;
         if(this.loginService.currentAdmin!=null) {
-          this.loginService.updateLoggedIn(true);
+          this.loginService.updateAdminLoggedIn(true);
         }
       }
       else {

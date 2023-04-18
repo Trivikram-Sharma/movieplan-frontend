@@ -11,6 +11,10 @@ import { LoginStatusComponent } from './components/login-status/login-status.com
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+import { ServiceComponent } from './components/service/service.component';
+import { TicketListComponent } from './components/ticket-list/ticket-list.component';
+import { PurchaseListComponent } from './components/purchase-list/purchase-list.component';
+import { MovieListComponent } from './components/movie-list/movie-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { ChangepasswordComponent } from './components/changepassword/changepassw
     ContactusComponent,
     LoginStatusComponent,
     RegisterComponent,
-    ChangepasswordComponent
+    ChangepasswordComponent,
+    ServiceComponent,
+    TicketListComponent,
+    PurchaseListComponent,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,

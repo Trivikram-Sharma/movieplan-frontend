@@ -1,11 +1,20 @@
-form .form-group{
+form{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+form .form-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 5px;
+    margin: 5px;
+}
 label {
-    text-align: center;
+    width: 200px;
+    text-align: right;
 }
 .form-control{
     width: 240px;
@@ -17,6 +26,19 @@ label {
     font-size: 17px;
 }
 .userpassword-error{
+    display:block;
+    background-color: yellow;
+    color: crimson;
+    font-size: 17px;
+}
+.name-error {
+    display:block;
+    background-color: yellow;
+    color: crimson;
+    font-size: 17px;
+}
+
+.email-error {
     display:block;
     background-color: yellow;
     color: crimson;

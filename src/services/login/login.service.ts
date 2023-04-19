@@ -25,7 +25,7 @@ export class LoginService {
   }
 
   adminLogin(admin:Admin) {
-    return this.http.post(adminapi.adminLogin,admin,{responseType:'text' as 'json'})
+    return this.http.post(adminapi.adminLogin,admin,{responseType:'text'})
   }
 
   userLogout(user:User) {
@@ -33,7 +33,7 @@ export class LoginService {
   }
 
   adminLogout(admin:Admin) {
-    return this.http.post(adminapi.adminLogout,admin,{responseType: 'text' as 'json'})
+    return this.http.post(adminapi.adminLogout,admin,{responseType: 'text'})
   }
 
   updateLoggedIn(status:boolean){

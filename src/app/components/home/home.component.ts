@@ -59,7 +59,11 @@ export class HomeComponent implements OnInit {
         };
         let resp = this.loginService.adminLogin(adminuser);
         resp.subscribe((data:any) => this.message = data);
-        this.loginService.currentAdmin = this.message;
+        if(this.message == "Hi " + adminuser.adminUserName + "! Welcome! Your Login is Successful!"){
+          this.loginService.currentAdmin = adminuser;
+        console.log('message is '+this.message);
+        
+        }
         if(this.loginService.currentAdmin!=null) {
           this.loginService.updateAdminLoggedIn(true);
         }

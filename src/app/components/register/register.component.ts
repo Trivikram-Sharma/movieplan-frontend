@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
     email: new FormControl('', Validators.required)
     }
   );
+  show:boolean = true;
   message:any;
   constructor(private registrationService:RegistrationService, private router:Router) { }
 
@@ -48,12 +49,15 @@ export class RegisterComponent implements OnInit {
         name: <String>this.name?.value,
         email: <String>this.email?.value
       };
-      let resp = this.registrationService.signUp(user);
-      resp.subscribe((data:any) => this.message = data);
+      this.registrationService.signUp(user)
+      .subscribe((data:any) => this.message = data);
       if(this.message==false) {
         this.formError = true;
       }
       else {
+        this.show = false;
+        //setTimeout(() => {this.show.replace("show","")},5000);
+        setTimeout(() => {this.router.navigate(['/home'])},5000);
       }
     }
     else {

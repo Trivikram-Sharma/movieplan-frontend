@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm" (ngSubmit)="submit()">
+<form [formGroup]="registerForm" (ngSubmit)="submit()" *ngIf="show">
     <div class="form-group">
         <label for="username">UserName:</label>
         <input type="text" formControlName="username" placeholder="Enter the username of your choice" required class="form-control">
@@ -37,3 +37,5 @@
     The registration failed as the  userId {{username}} is not unique and is already present and used! Please try again!
 </div>
 
+
+<app-toast [username]="username" *ngIf="!show"></app-toast>

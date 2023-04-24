@@ -21,19 +21,19 @@ export class LoginService {
   adminLoggedIn:boolean = false;
   loggedin:boolean = this.userLoggedIn || this.adminLoggedIn;
   userLogin(user:User) {
-    return this.http.post(userapi.signIn,user,{responseType:'text' as 'json'})
+    return this.http.post<User>(userapi.signIn,user,{responseType:'json'})
   }
 
   adminLogin(admin:Admin) {
-    return this.http.post(adminapi.adminLogin,admin,{responseType:'text'})
+    return this.http.post<Admin>(adminapi.adminLogin,admin,{observe: 'body',responseType:'json'})
   }
 
   userLogout(user:User) {
-    return this.http.post(userapi.signOut,user,{responseType:'text' as 'json'})
+    return this.http.patch(userapi.signOut + user.userName,null,{responseType:'json'});
   }
 
   adminLogout(admin:Admin) {
-    return this.http.post(adminapi.adminLogout,admin,{responseType: 'text'})
+    return this.http.post<Admin>(adminapi.adminLogout,admin,{observe:'body',responseType: 'json'})
   }
 
   updateLoggedIn(status:boolean){
@@ -48,4 +48,17 @@ export class LoginService {
   updateAdminLoggedIn(status:boolean) {
     this.adminLoggedIn = status;
   }
+
+  getLoggedIn(){
+    return this.loggedin;
+  }
+
+  updateCurrentUser(user:User){
+    this.currentUser = user;
+  }
+
+  updateCurrentAdmin(admin:Admin) {
+    this.currentAdmin = admin;
+  }
+
 }

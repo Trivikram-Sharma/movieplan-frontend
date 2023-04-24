@@ -15,6 +15,9 @@ import { ServiceComponent } from './components/service/service.component';
 import { TicketListComponent } from './components/ticket-list/ticket-list.component';
 import { PurchaseListComponent } from './components/purchase-list/purchase-list.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { LoginService } from 'src/services/login/login.service';
+import { RegistrationService } from 'src/services/registration/registration.service';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
     ServiceComponent,
     TicketListComponent,
     PurchaseListComponent,
-    MovieListComponent
+    MovieListComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [LoginService,RegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

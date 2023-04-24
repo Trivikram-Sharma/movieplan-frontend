@@ -41,7 +41,7 @@ export class ChangepasswordComponent implements OnInit {
       if(<String>this.oldpassword?.value == this.currentUser.password) {
         if(this.newpassword?.value == this.confirmpassword?.value){
           let changepasswordRecord = {
-
+            
           };
           //Some code for password change
         }

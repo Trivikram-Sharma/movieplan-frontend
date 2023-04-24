@@ -13,7 +13,7 @@
 <hr />
 <hr />
 <div class="login" *ngIf="!loggedin">
-    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <form [formGroup]="loginForm" *ngIf="!loggedin" (ngSubmit)="submit()">
         <div class="form-group">
         <label>UserName:</label>
         <input type="text" formControlName="userName" class="form-control" placeholder="Enter UserName" required>

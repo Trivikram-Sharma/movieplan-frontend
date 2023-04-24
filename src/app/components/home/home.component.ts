@@ -15,6 +15,12 @@ export class HomeComponent implements OnInit {
   isAdmin=['Yes','No'];
   loginError=false;
   message:any=null;
+  tempArray:Admin[] = [];
+  
+  loggedin:boolean=false;
+  currentUser = this.loginService.currentUser;
+  currentAdmin = this.loginService.currentAdmin;
+  //Form Initialization
   loginForm = new FormGroup({
     userName: new FormControl('',Validators.required),
     password: new FormControl('',Validators.required),
@@ -24,8 +30,12 @@ export class HomeComponent implements OnInit {
       }
     )
   });
+  
   ngOnInit(): void {
+    this.loggedin  = this.loginService.getLoggedIn();
   }
+
+  //GETTERS
   get userName(){
     return this.loginForm.get('userName')
   }
@@ -35,7 +45,8 @@ export class HomeComponent implements OnInit {
   get adminrole() {
     return this.loginForm.get('adminroleGroup')?.get('adminrole')
   }
-  loggedin:boolean = this.loginService.loggedin;
+ 
+  //SUBMIT METHOD
   submit(){
     if(!this.loginForm.invalid){
       if(this.adminrole?.value=="No") {
@@ -44,11 +55,13 @@ export class HomeComponent implements OnInit {
           password: <String>this.password?.value,
           status:"inactive"
         };
-        let resp = this.loginService.userLogin(user);
-        resp.subscribe((data:any) => this.message = data);
-        this.loginService.currentUser = this.message;
-        if(this.loginService.currentUser!=null) {
+        this.loginService.userLogin(user).subscribe(
+          (data) => this.currentUser = data);
+        if(this.currentUser!=null) {
           this.loginService.updateUserLoggedIn(true);
+          this.loginService.updateCurrentUser(this.currentUser);
+          this.loginService.updateLoggedIn(true);
+          this.loggedin = this.loginService.getLoggedIn();
         }
       }
       else if(this.adminrole?.value=="Yes") {
@@ -57,15 +70,21 @@ export class HomeComponent implements OnInit {
           adminPassword: <String>this.password?.value,
           status: "inactive"
         };
-        let resp = this.loginService.adminLogin(adminuser);
-        resp.subscribe((data:any) => this.message = data);
-        if(this.message == "Hi " + adminuser.adminUserName + "! Welcome! Your Login is Successful!"){
-          this.loginService.currentAdmin = adminuser;
-        console.log('message is '+this.message);
-        
-        }
-        if(this.loginService.currentAdmin!=null) {
+        this.loginService.adminLogin(adminuser).subscribe(
+          data => {
+            this.currentAdmin = { adminUserName : data.adminUserName,
+                                  adminPassword : data.adminPassword,
+                                  status : data.status};
+            //console.log(data);
+          });
+        // console.log('Current Admin ->',this.currentAdmin);
+        // console.log('tempArray->',this.tempArray);
+        if(this.currentAdmin!=null) {
           this.loginService.updateAdminLoggedIn(true);
+          this.loginService.updateCurrentAdmin(this.currentAdmin);
+          this.loginService.updateLoggedIn(true);
+          this.loggedin = this.loginService.getLoggedIn();
+          //console.log('this.loggedin ->',this.loggedin);
         }
       }
       else {

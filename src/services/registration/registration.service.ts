@@ -10,6 +10,6 @@ export class RegistrationService {
   constructor(private http:HttpClient) { }
 
   signUp(user:User){
-    return this.http.post(userapi.signUp,user,{responseType:'text' as 'json'})
+    return this.http.post(userapi.signUp,user,{responseType:'json'})
   }
 }

@@ -2,11 +2,19 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    
 }
 
 .movie-card{
     text-align: center;
     width: 250px;
     height: 300px;
+    margin: 60px;
+    border: 10px;
+    margin-bottom: 70px;
+}
+figcaption{
+    text-align: center;
+}
+button{
+    text-align: center;
 }

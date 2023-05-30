@@ -7,10 +7,12 @@ nav {
     color: aquamarine;
     font-family: tahoma serif;
     font-variant-caps: all-small-caps;
+    height: 150px;
 }
 
 nav .icon {
     font-size: 28px;
+    text-align: center;
 }
 
 .dropdown {

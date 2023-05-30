@@ -9,6 +9,7 @@ import { ServiceComponent } from './components/service/service.component';
 import { TicketListComponent } from './components/ticket-list/ticket-list.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { PurchaseListComponent } from './components/purchase-list/purchase-list.component';
+import { SearchListComponent } from './components/search-list/search-list.component';
 
 const routes: Routes = [
   {path:"", redirectTo:"home",pathMatch:"full"},
@@ -17,10 +18,11 @@ const routes: Routes = [
   {path:"contact", component: ContactusComponent},
   {path:"register",component:RegisterComponent},
   {path:"changepassword",component:ChangepasswordComponent},
-  {path:"servicesList", component: ServiceComponent},
-  {path:"ticketList",component:TicketListComponent},
+  {path:"servicesList", component: ServiceComponent,
+  children:[{path:"ticketList",component:TicketListComponent},
   {path:"movieList",component:MovieListComponent},
-  {path:"purchaseHistory",component:PurchaseListComponent}
+  {path:"purchaseHistory",component:PurchaseListComponent},
+  {path:"searchList", component:SearchListComponent}]},
 ];
 
 @NgModule({

@@ -10,11 +10,25 @@
     border:0px;
     background-color: darkolivegreen;
     width: 20%;
-
+}
+.sidebar li {
+    list-style-type: none;
+}
+.sidebar li a {
+    text-decoration: None;
+    color: skyblue;
+    font-size: 22px;
+}
+.sidebar li a:hover{
+    background-color: yellow;
+    color: crimson;
+    font-size: 24px;
 }
 .main-content{
     display: flex;
+    flex-direction: column;
     width: 80%;
     justify-content: space-evenly;
     background-color: white;
+    align-items: center;
 }

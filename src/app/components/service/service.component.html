@@ -1,21 +1,23 @@
 <div class="service-container" *ngIf="!loggedin else defaultcontent">
     <div class="sidebar">
         <ul>
-           <li>Tickets</li> 
-           <li>Movies</li> 
-           <li>Search History</li> 
-           <li>Purchase History</li> 
+           <li><a routerLink="/servicesList/ticketList"> Tickets</a></li> 
+           <li><a routerLink="/servicesList/movieList">Movies</a></li> 
+           <li><a routerLink="/servicesList/searchList">Search History</a></li> 
+           <li><a routerLink="/servicesList/purchaseHistory">Purchase History</a></li> 
         </ul>
     </div>
 
     <div class="main-content">
-        <ul>
+        <!-- <ul>
             <li>Movie 1</li>
             <li>Movie 2</li>
             <li>Movie 3</li>
             <li>Movie 4</li>
             <li>Movie 5</li>
-        </ul>
+        </ul> -->
+        <app-searchbar></app-searchbar><br />
+        <router-outlet></router-outlet>
     </div>
 </div>
 

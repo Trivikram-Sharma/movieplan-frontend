@@ -1,0 +1,16 @@
+#filterForm{
+    display : none
+}
+.searchForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: darkseagreen;
+    border: 1px solid red;
+}
+.searchForm .form-control{
+    padding: 10px;
+    margin: 20px;
+    color: green;
+}

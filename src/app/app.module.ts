@@ -18,6 +18,8 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 import { LoginService } from 'src/services/login/login.service';
 import { RegistrationService } from 'src/services/registration/registration.service';
 import { ToastComponent } from './components/toast/toast.component';
+import { SearchListComponent } from './components/search-list/search-list.component';
+import { SearchbarComponent } from './components/searchbar/searchbar.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ToastComponent } from './components/toast/toast.component';
     TicketListComponent,
     PurchaseListComponent,
     MovieListComponent,
-    ToastComponent
+    ToastComponent,
+    SearchListComponent,
+    SearchbarComponent
   ],
   imports: [
     BrowserModule,

@@ -7,17 +7,22 @@
         <option value="SHOWTIME">Showtime</option>
     </select>
     <input type="search" class="form-control" formControlName="searchBox">
-    <span (click)="showFilters()" class="form-control" id="FiltersIcon">Filters</span>
-    <form [formGroup]="filterForm" (ngSubmit)="applyFilters()" id="filterForm" [style.display]="filterShow? 'block':'none'">
-        <div *ngFor="let f of filterForm.get('filters')?.value;let i=index">
-            <label>{{f[0]}}</label>
-            <input type="text" [formControlName]="i" value="">
-        </div>
-    </form>
+    <span (click)="showFilters(searchForm.get('searchEntity')?.value)" class="form-control" id="FiltersIcon">Filters</span>
+    <span id="sortBy">Sort By : </span> 
+    <select formControlName="sortBy" (onchange)="setSortField()">
+            <option value="s" *ngFor="let s of sortFieldList">{{s}}</option>
+    </select>
     <span (click)="toggle()" class="form-control" id="sortButton">Sort - {{sort}}</span>
     <button type="submit">Search</button>
 </form>
 <br>
+<form [formGroup]="filterForm" (ngSubmit)="applyFilters()" id="filterForm" [style.display]="filterShow? 'flex':'none'">
+    <div class="filter-group" *ngFor="let f of filterControls">
+        <label>{{f}}</label>
+        <input type="text" [formControlName]="f" class="form-control" value="">
+    </div>
+    <button type="submit" id="apply-filters">Apply Filters</button>
+</form>
 <pre>
     
 </pre>

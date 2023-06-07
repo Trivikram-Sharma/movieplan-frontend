@@ -1,6 +1,3 @@
-#filterForm{
-    display : none
-}
 .searchForm {
     display: flex;
     flex-direction: row;
@@ -9,8 +6,53 @@
     background-color: darkseagreen;
     border: 1px solid red;
 }
+#filterForm{
+    display : flex;
+    flex-direction: column;
+    text-align: center;
+}
 .searchForm .form-control{
     padding: 10px;
     margin: 20px;
     color: green;
+}
+
+#sortBy {
+    padding: 5px;
+    color: green;
+}
+.input-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.filter-group{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+}
+.filter-group label{
+    padding-right: 0px;
+    margin-right: 0px;
+    border: 1px solid red;
+}
+.filter-group input{
+    padding-left: 0px;
+    margin-left: 0px;
+    border: 1px solid crimson;
+}
+#apply-filters{
+    text-align: center;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: darkblue;
+    color: lightblue;
+}
+#sortButton{
+    background-color: pink;
 }

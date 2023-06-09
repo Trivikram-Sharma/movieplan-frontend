@@ -1,7 +1,14 @@
-<ul>
-    <li>Ticket 1</li>
-    <li>Ticket 2</li>
-    <li>Ticket 3</li>
-    <li>Ticket 4</li>
-    <li>Ticket 5</li>
-</ul>
+<table>
+    <thead>
+        <td>Id</td>
+        <td>UserName</td>
+        <td>Movie</td>
+        <td>Price</td>
+    </thead>
+    <tr *ngFor="let t of ticketList">
+        <td><a href="#" target="_blank" (click)="showTicket(t.id)">{{t.id}}</a></td>
+        <td><a href="#">{{t.user}}</a></td>
+        <td><a href="#">{{t.movie}}</a></td>
+        <td><a href="#">{{t.movie.price}}</a></td>
+    </tr>
+</table>

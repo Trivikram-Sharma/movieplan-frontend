@@ -20,6 +20,7 @@ import { RegistrationService } from 'src/services/registration/registration.serv
 import { ToastComponent } from './components/toast/toast.component';
 import { SearchListComponent } from './components/search-list/search-list.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { TicketService } from 'src/services/ticket/ticket.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [LoginService,RegistrationService],
+  providers: [LoginService,RegistrationService, TicketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

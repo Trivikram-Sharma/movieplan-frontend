@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Admin } from 'src/interfaces/admin';
 import { LoginService } from 'src/services/login/login.service';
 
 @Component({
@@ -14,4 +16,10 @@ export class MovieListComponent implements OnInit {
   }
 
   loggedin:boolean = this.loginService.loggedin;
+  adminLoggedIn:Admin = this.loginService.currentAdmin;
+
+  movieForm = new FormGroup({})
+  toggleMovieEdit(){
+    
+  }
 }

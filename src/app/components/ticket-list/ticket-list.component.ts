@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TicketService } from 'src/services/ticket/ticket.service';
 import { Ticket } from 'src/interfaces/ticket';
 import { LoginService } from 'src/services/login/login.service';
+import { Admin } from 'src/interfaces/admin';
 @Component({
   selector: 'app-ticket-list',
   templateUrl: './ticket-list.component.html',
@@ -15,7 +16,7 @@ export class TicketListComponent implements OnInit {
   }
   message:any;
   //ticketList: Ticket[] = [];
-
+  adminLoggedIn:Admin = this.loginService.currentAdmin;
    get ticketList(){
     this.ticketService.getAllTicketsOfCurrentUser()
     .subscribe(

@@ -1,13 +1,17 @@
 
+<div *ngIf="adminLoggedIn">
+<a target="_top">Add Movie</a>
+</div>
+
 <div class="movie-container" *ngIf="loggedin">
+    <form [formGroup]="movieForm">
     <div class="movie-card">
         <figure>
             <img src="../../../assets/movies/baahubali2.webp" alt="Movie Image Not Found" width="250px" height="300px">
-            <figcaption>Bahubali 2<br><button>Book Ticket</button></figcaption>
+            <figcaption>Bahubali 2<br><button>Book Ticket</button>
+            <br><button formControlName(click)="toggleMovieEdit()">Edit Movie</button>
+            </figcaption>
         </figure><br>
-
-        
-
     </div>
     <div class="movie-card">
         <figure>
@@ -37,6 +41,7 @@
         </figure><br>
 
     </div>
+    </form>
 </div>
 
 <div *ngIf="!loggedin">

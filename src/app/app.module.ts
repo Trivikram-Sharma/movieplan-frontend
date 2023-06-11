@@ -21,6 +21,9 @@ import { ToastComponent } from './components/toast/toast.component';
 import { SearchListComponent } from './components/search-list/search-list.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { TicketService } from 'src/services/ticket/ticket.service';
+import { AddmovieComponent } from './components/addmovie/addmovie.component';
+import { MovieService } from 'src/services/movie/movie.service';
+import { GenreService } from 'src/services/genre/genre.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { TicketService } from 'src/services/ticket/ticket.service';
     MovieListComponent,
     ToastComponent,
     SearchListComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    AddmovieComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,7 @@ import { TicketService } from 'src/services/ticket/ticket.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [LoginService,RegistrationService, TicketService],
+  providers: [LoginService,RegistrationService, TicketService, MovieService, GenreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

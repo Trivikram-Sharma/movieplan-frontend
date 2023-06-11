@@ -13,4 +13,5 @@ export class ServiceComponent implements OnInit {
   ngOnInit(): void {
   }
   loggedin:boolean = this.loginService.loggedin;
+  adminLoggedin:boolean = this.loginService.adminLoggedIn;
 }

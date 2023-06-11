@@ -8,5 +8,7 @@ export class MovieService {
 
   constructor(private httpClient:HttpClient) { }
 
-  
+  getLatestMovieId(){
+    
+  }
 }

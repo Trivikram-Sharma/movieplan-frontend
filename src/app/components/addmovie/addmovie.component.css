@@ -1,0 +1,26 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+form .form-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 5px;
+    margin: 5px;
+}
+
+.form-group label{
+    width: 200px;
+    text-align: center;
+    font-style: Tahoma;
+}
+.form-group .form-control{
+    width: 250px;
+    text-align: left;
+}

@@ -11,6 +11,6 @@ export class ToastComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  @Input() public username:any;
+  @Input() public message:any;
 
 }

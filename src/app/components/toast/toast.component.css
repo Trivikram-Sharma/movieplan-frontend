@@ -1,5 +1,5 @@
 #toast-message{
-    visibility: visible;
+    visibility: none;
     min-width: 350px;
     top: 30px;
     text-align: center;
@@ -8,7 +8,7 @@
     background-color: greenyellow;
 }
 
-/* #toast-message.show{
+#toast-message.show{
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
@@ -32,4 +32,4 @@
 @keyframes fadeout {
     from {top: 30px; opacity:1;}
     to {top: 0; opacity: 0;}
-}*/
+}

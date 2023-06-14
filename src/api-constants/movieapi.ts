@@ -5,6 +5,9 @@ export default class movieapi{
 
     //CREATE APIs
     public static addMovie = this.prefix + this.movieprefix + "/add";
+
+    //GET APIs
+    public static getNewId = this.prefix + this.movieprefix + "/getNewId";
     public static getAllMovies = this.prefix + this.movieprefix + "/search";
     public static getMoviesByTitle = this.prefix + this.movieprefix + "/search/title";
     public static getMoviesInPriceRange = this.prefix + this.movieprefix + "/search/pricerange";

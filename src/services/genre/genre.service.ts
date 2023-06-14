@@ -12,4 +12,7 @@ export class GenreService {
   getAllGenres(){
     return this.httpClient.get<Genre[]>(genreapi.getAllGenres);
   }
+  getGenreByName(name:string){
+    return this.httpClient.get<Genre[]>(genreapi.getAllGenresWithName+`?name=${name}`);
+  }
 }

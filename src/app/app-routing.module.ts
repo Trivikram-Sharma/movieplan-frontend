@@ -10,6 +10,7 @@ import { TicketListComponent } from './components/ticket-list/ticket-list.compon
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { PurchaseListComponent } from './components/purchase-list/purchase-list.component';
 import { SearchListComponent } from './components/search-list/search-list.component';
+import { AddmovieComponent } from './components/addmovie/addmovie.component';
 
 const routes: Routes = [
   {path:"", redirectTo:"home",pathMatch:"full"},
@@ -22,7 +23,8 @@ const routes: Routes = [
   children:[{path:"ticketList",component:TicketListComponent},
   {path:"movieList",component:MovieListComponent},
   {path:"purchaseHistory",component:PurchaseListComponent},
-  {path:"searchList", component:SearchListComponent}]},
+  {path:"searchList", component:SearchListComponent},
+  {path: "addMovie", component:AddmovieComponent}]},
 ];
 
 @NgModule({

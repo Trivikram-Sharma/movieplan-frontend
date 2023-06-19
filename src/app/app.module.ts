@@ -24,6 +24,9 @@ import { TicketService } from 'src/services/ticket/ticket.service';
 import { AddmovieComponent } from './components/addmovie/addmovie.component';
 import { MovieService } from 'src/services/movie/movie.service';
 import { GenreService } from 'src/services/genre/genre.service';
+import { GenrelistComponent } from './components/genrelist/genrelist.component';
+import { AddgenreComponent } from './components/addgenre/addgenre.component';
+import { EditmovieComponent } from './components/editmovie/editmovie.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { GenreService } from 'src/services/genre/genre.service';
     ToastComponent,
     SearchListComponent,
     SearchbarComponent,
-    AddmovieComponent
+    AddmovieComponent,
+    GenrelistComponent,
+    AddgenreComponent,
+    EditmovieComponent
   ],
   imports: [
     BrowserModule,

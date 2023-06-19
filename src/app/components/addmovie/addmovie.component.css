@@ -24,3 +24,13 @@ form .form-group{
     width: 250px;
     text-align: left;
 }
+#AddGenreButton{
+    size: 5px;
+    background-color: darkcyan;
+    color: lightgray;
+}
+#RemoveGenreButton{
+    size: 5px;
+    background-color: red;
+    color: white;
+}

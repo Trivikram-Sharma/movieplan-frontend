@@ -11,6 +11,9 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 import { PurchaseListComponent } from './components/purchase-list/purchase-list.component';
 import { SearchListComponent } from './components/search-list/search-list.component';
 import { AddmovieComponent } from './components/addmovie/addmovie.component';
+import { GenrelistComponent } from './components/genrelist/genrelist.component';
+import { AddgenreComponent } from './components/addgenre/addgenre.component';
+import { EditmovieComponent } from './components/editmovie/editmovie.component';
 
 const routes: Routes = [
   {path:"", redirectTo:"home",pathMatch:"full"},
@@ -24,7 +27,10 @@ const routes: Routes = [
   {path:"movieList",component:MovieListComponent},
   {path:"purchaseHistory",component:PurchaseListComponent},
   {path:"searchList", component:SearchListComponent},
-  {path: "addMovie", component:AddmovieComponent}]},
+  {path: "genreList", component: GenrelistComponent},
+  {path: "addMovie", component:AddmovieComponent},
+  {path:"addGenre",component: AddgenreComponent},
+  {path:"editMovie", component: EditmovieComponent}]},
 ];
 
 @NgModule({

@@ -8,6 +8,7 @@ export default class movieapi{
 
     //GET APIs
     public static getNewId = this.prefix + this.movieprefix + "/getNewId";
+    public static getMovieWithId = this.prefix + this.movieprefix + "/id";
     public static getAllMovies = this.prefix + this.movieprefix + "/search";
     public static getMoviesByTitle = this.prefix + this.movieprefix + "/search/title";
     public static getMoviesInPriceRange = this.prefix + this.movieprefix + "/search/pricerange";
@@ -26,6 +27,7 @@ export default class movieapi{
     public static updateMovieDescription = this.prefix + this.movieprefix + "/update/description";
     public static enableMovie = this.prefix + this.movieprefix + "/update/enable";
     public static disableMovie = this.prefix + this.movieprefix + "/update/disable";
+    public static updateReleaseDate = this.prefix + this.movieprefix + "/update/releaseDate";
     public static updateMovieWithGenre = this.prefix + this.movieprefix + "/update/addGenre";
     public static updateMovieWithGenres = this.prefix + this.movieprefix + "/update/addGenres";
     

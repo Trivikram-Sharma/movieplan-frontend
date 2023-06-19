@@ -1,0 +1,49 @@
+<form [formGroup]="editMovieForm" (ngSubmit)="editMovie()">
+    <fieldset>
+        <div class="form-group">
+            <label class="form-label">Title</label>
+            <input type="text" formControlName="title" class="form-control">
+        </div>
+        <div class="form-group">
+            <label class="form-label">price</label>
+            <input type="number" class="form-control" formControlName="price">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Language</label>
+            <select class="form-control" formControlName="language">
+                <option value="Telugu">Telugu</option>
+                <option value="Kannada">Kannada</option>
+                <option value="Tamil">Tamil</option>
+                <option value="Malayalam">Malayalam</option>
+                <option value="Hindi">Hindi</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" formControlName="description">
+
+            </textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-label">releaseDate</label>
+            <input type="date" class="form-control" formControlName="releaseDate">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Status</label>
+            <div class="form-control">
+                <input type="radio" formControlName="status" value="enabled">
+                <input type="radio" formControlName="status" value="disabled">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Genres</label>
+            <div *ngFor="let g of allGenres(); let i = index">
+                <select>
+                    <option value="g.name">{{g.name}}</option>
+                </select>
+                <span (click)="removeGenre(i)"> - </span> <br>
+            </div>
+        </div><br>
+        <button type="submit">Edit Movie</button>
+    </fieldset>
+</form>

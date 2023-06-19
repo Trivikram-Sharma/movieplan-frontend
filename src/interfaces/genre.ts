@@ -1,7 +1,7 @@
 import { Movie } from "./movie";
 
 export interface Genre {
-    id:Number;
+    id?:Number;
     name:String;
-    movies: Movie[];
+    movies?: Movie[];
 }

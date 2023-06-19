@@ -1,0 +1,14 @@
+a {
+    background-color: yellow;
+    text-decoration: wavy;
+    float: left;
+}
+table{
+    text-align: center;
+    border: 5px solid crimson;
+    padding: 2px;
+    margin: 2px
+}
+table tr td{
+    text-align: center;
+}

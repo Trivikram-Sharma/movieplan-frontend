@@ -15,4 +15,11 @@ export class GenreService {
   getGenreByName(name:string){
     return this.httpClient.get<Genre[]>(genreapi.getAllGenresWithName+`?name=${name}`);
   }
+  addGenre(genre:Genre){
+    return this.httpClient.post<boolean>(genreapi.addgenre,genre);
+  }
+
+  deleteGenre(genre:Genre){
+    return this.httpClient.delete<boolean>(genreapi.deleteGenre+`?name=${genre.name}`);
+  }
 }

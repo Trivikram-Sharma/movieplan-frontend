@@ -8,6 +8,7 @@ export interface Movie {
     description:String;
     releaseDate:Date;
     status:String;
+    filename:String;
     genres: Genre[];
     screenings: Screening[];
 }

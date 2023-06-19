@@ -33,7 +33,8 @@ export class AddmovieComponent implements OnInit {
   });
 
   message:any;
-
+  responseid:string = "";
+  genrelist:Genre[] = [];
   get genreControls(){
     return (<FormArray>this.addMovieForm.get('genres')).controls;
   }
@@ -51,31 +52,41 @@ export class AddmovieComponent implements OnInit {
     (<FormArray>this.addMovieForm.get('genres')).removeAt(i);
   }
   
+  getNewId(title:string, description:string, language:string, releaseDate:string){
+    let responseid="";
+    this.movieService.getLatestMovieId(title, description,language,releaseDate)
+    .subscribe( 
+      (data:string) => {this.responseid = data; console.log(data);}
+      );
+      console.log('response id->',this.responseid);
+    return this.responseid;
+  }
   submitAddMovie(){
     let title:string|null|undefined = this.addMovieForm.get('title')?.value;
     let language:string|null|undefined = this.addMovieForm.get('language')?.value;
     let description:string|null|undefined = this.addMovieForm.get('description')?.value;
     let releaseDate:string|null|undefined = this.addMovieForm.get('releaseDate')?.value;
-    let responseid="";
-    this.movieService.getLatestMovieId(title, description,language,releaseDate)
-    .subscribe( (data:string) => responseid = data);
-    if(responseid!==""){
-      this.addMovieForm.get('id')?.setValue(responseid);
-      let genrelist: Genre[] = [];
+    this.responseid = this.getNewId(<string>title, <string>description, <string>language,<string>releaseDate);
+    console.log(this.responseid);
+    if(this.responseid!=""){
+      this.addMovieForm.get('id')?.setValue(this.responseid);
+      //let genrelist: Genre[] = [];
       this.addMovieForm.get('genres')?.value.map(
         genrename => this.genreService.getGenreByName(<string>genrename).subscribe(
-          (data: Genre[]) => genrelist.push(data[0])
+          (data: Genre[]) => this.genrelist.push(data[0])
         )
       );
+      console.log('genre list->',this.genrelist);
       let m:Movie = {
-        id: responseid,
+        id: this.responseid,
         title: <string>title,
         price: parseInt(<string>this.addMovieForm.get('price')?.value),
         language: <string>language,
         description: <string>description,
         releaseDate: new Date(<string>releaseDate),
         status: <string>this.addMovieForm.get('status')?.value,
-        genres: genrelist,
+        filename: <string>this.addMovieForm.get('movieposter')?.value,
+        genres: this.genrelist,
         screenings: []
       };
       let movieadded = false;

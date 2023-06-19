@@ -1,0 +1,13 @@
+
+<form [formGroup]="addGenreForm" (ngSubmit)="addGenre()" *ngIf="adminLoggedIn">
+    <fieldset>
+        <div class="form-group">
+            <label class="form-label">Genre Name:</label>
+            <input type="text" class="form-control" formControlName="name" value="">
+        </div>
+        <button type="submit">Add Genre</button>
+    </fieldset>
+
+</form>
+
+<app-toast [message]="message" [show]="show"></app-toast>

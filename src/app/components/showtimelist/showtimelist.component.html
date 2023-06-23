@@ -1,0 +1,20 @@
+<a *ngIf="adminLoggedIn" routerLink="/servicesList/addShowTime">Add Showtime</a>
+
+<table>
+    <tr>
+        <th>ShowTime ID</th>
+        <th>Show Name</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Delete</th>
+        <th>Screenings</th>
+    </tr>
+    <tr *ngFor="let s of showtimelist">
+        <td>{{s.id}}</td>
+        <td>{{s.showName}}</td>
+        <td>{{s.startTime}}</td>
+        <td>{{s.endTime}}</td>
+        <td><a (click)="deleteShowtime(s)">Delete</a></td>
+        <td>{{getScreeningsOfShowtime(s)}}</td>
+    </tr>
+</table>

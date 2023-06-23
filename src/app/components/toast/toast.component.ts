@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ToastService } from 'src/services/toast/toast.service';
 
 @Component({
   selector: 'app-toast',
@@ -7,11 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ToastComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toastService: ToastService) { }
 
   ngOnInit(): void {
   }
-  @Input() public message:any;
-  @Input() public show:any;
-
+  // @Input() public message:any;
+  // @Input() public show:any;
+  message:any = this.toastService.getMessage();
+  show:string = this.toastService.getShow();
 }

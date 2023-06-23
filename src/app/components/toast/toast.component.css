@@ -1,11 +1,15 @@
 #toast-message{
     visibility: none;
     min-width: 350px;
-    top: 30px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-self: flex-start;
+    justify-content: center;
     text-align: center;
-    left:50%;
     color: green;
     background-color: greenyellow;
+    font-size: medium;
+    border-radius: 20px;
 }
 
 #toast-message.show{

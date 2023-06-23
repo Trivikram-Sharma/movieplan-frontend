@@ -5,5 +5,6 @@ export default class showtimeapi{
 
     public static addShowTime = this.prefix + this.showtimeprefix + "/add";
     public static getShowTimesByName = this.prefix + this.showtimeprefix + "/search";
+    public static getAllShowTimes = this.prefix + this.showtimeprefix + "/get/all";
     public static deleteShowTime = this.prefix + this.showtimeprefix + "/delete";
 }

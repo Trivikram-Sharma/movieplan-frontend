@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Admin } from 'src/interfaces/admin';
 import { Genre } from 'src/interfaces/genre';
 import { GenreService } from 'src/services/genre/genre.service';
 import { LoginService } from 'src/services/login/login.service';
+import { ToastService } from 'src/services/toast/toast.service';
 
 @Component({
   selector: 'app-genrelist',
@@ -11,7 +13,10 @@ import { LoginService } from 'src/services/login/login.service';
 })
 export class GenrelistComponent implements OnInit {
 
-  constructor(private genreService: GenreService, private loginService: LoginService) { }
+  constructor(private genreService: GenreService,
+     private loginService: LoginService,
+     private toastService: ToastService,
+     private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -37,11 +42,15 @@ export class GenrelistComponent implements OnInit {
     .subscribe( (data:boolean) => this.genredeleted = data);
     }
     if(this.genredeleted) {
+      this.message = `Genre ${genre.name} deleted successfully!`;
+      this.show = "show";
       setTimeout(() =>{
-        this.message = `Genre ${genre.name} deleted successfully!`;
-        this.show = "show";
-      },50000);
+        this.toastService.setMessage(this.message);
+        this.toastService.setShow(this.show);
+      },5000);
+      this.toastService.setShow("");
       alert(`Genre with name ${genre.name} deleted successfully!`);
+      this.router.navigate(['/servicesList/genreList']);
     }
   }
   

@@ -1,0 +1,25 @@
+<a routerLink="servicesList/addAddress" *ngIf="adminLoggedIn">Add Address</a><br>
+
+<table>
+    <tr>
+        <th>Building/ Door Number</th>
+        <th>Street</th>
+        <th>Area</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>Pincode</th>
+        <th>Edit/Delete</th>
+    </tr>
+    <tr *ngFor="let a of addressList">
+        <td>{{a.building}}</td>
+        <td>{{a.street}}</td>
+        <td>{{a.area}}</td>
+        <td>{{a.city}}</td>
+        <td>{{a.state}}</td>
+        <td>{{a.country}}</td>
+        <td>{{a.pincode}}</td>
+        <td><a routerLink="servicesList/editAddress">Edit</a>/
+            <a (click)="deleteAddress">Delete</a></td>
+    </tr>
+</table>

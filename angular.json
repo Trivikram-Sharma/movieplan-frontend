@@ -97,11 +97,8 @@
         }
       }
     }
-<<<<<<< HEAD
-=======
   },
   "cli": {
     "analytics": false
->>>>>>> 3876234 (New machine commit)
   }
 }

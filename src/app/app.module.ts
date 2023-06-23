@@ -27,6 +27,14 @@ import { GenreService } from 'src/services/genre/genre.service';
 import { GenrelistComponent } from './components/genrelist/genrelist.component';
 import { AddgenreComponent } from './components/addgenre/addgenre.component';
 import { EditmovieComponent } from './components/editmovie/editmovie.component';
+import { ToastService } from 'src/services/toast/toast.service';
+import { ShowtimelistComponent } from './components/showtimelist/showtimelist.component';
+import { AddshowtimeComponent } from './components/addshowtime/addshowtime.component';
+import { ShowtimeService } from 'src/services/showtime/showtime.service';
+import { AddressService } from 'src/services/address/address.service';
+import { AddresslistComponent } from './components/addresslist/addresslist.component';
+import { AddaddressComponent } from './components/addaddress/addaddress.component';
+import { EditaddressComponent } from './components/editaddress/editaddress.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +55,12 @@ import { EditmovieComponent } from './components/editmovie/editmovie.component';
     AddmovieComponent,
     GenrelistComponent,
     AddgenreComponent,
-    EditmovieComponent
+    EditmovieComponent,
+    ShowtimelistComponent,
+    AddshowtimeComponent,
+    AddresslistComponent,
+    AddaddressComponent,
+    EditaddressComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +69,9 @@ import { EditmovieComponent } from './components/editmovie/editmovie.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [LoginService,RegistrationService, TicketService, MovieService, GenreService],
+  providers: [LoginService,RegistrationService, TicketService,
+     MovieService, GenreService, ToastService,
+    ShowtimeService,AddressService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,22 @@
+form{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.form-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.form-label{
+    float: left;
+    width: 30px;
+}
+.form-control{
+    float: right;
+    width: 50px;
+}
+button{
+    text-align: center;
+}

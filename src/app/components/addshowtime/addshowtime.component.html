@@ -1,0 +1,17 @@
+<form [formGroup]="addShowtimeForm" (ngSubmit)="addShowtime()">
+    <fieldset>
+        <div class="form-group">
+            <div class="form-label">ShowName</div>
+            <input type="text" class="form-control" formControlName="showName" value="">
+        </div>
+        <div class="form-group">
+            <div class="form-label">Start Time</div>
+            <input type="time" class="form-control" formControlName="startTime">
+        </div>
+        <div class="form-group">
+            <div class="form-label">End Time</div>
+            <input type="time" class="form-control" formControlName="endTime">
+        </div>
+    </fieldset>
+    <button type="submit">Add ShowTime</button>
+</form>

@@ -29,4 +29,33 @@ export class MovieService {
     this.getMovieWithId(id)
     .subscribe( (data:Movie) => this.currentMovie = data);
   }
+
+  updateMovieTitle(title:string,movieid:string){
+    return this.httpClient.patch<boolean>(movieapi.updateMovieTitle+`/${movieid}?title=${title}`,title);
+  }
+
+  updateMoviePrice(price:Number,movieid:string){
+    return this.httpClient.patch<boolean>(movieapi.updateMoviePrice+`/${movieid}?price=${price}`,price);
+  }
+
+  updateMovieLanguage(language:string, movieid:string){
+    return this.httpClient.patch<boolean>(movieapi.updateMovieLanguage+`/${movieid}?language=${language}`,language);
+  }
+  updateMovieDescription(description:string,movieid:string){
+    return this.httpClient.patch<boolean>(movieapi.updateMovieDescription+`/${movieid}?description=${description}`,description);
+  }
+  enableMovie(movieid:string){
+    return this.httpClient.patch<boolean>(movieapi.enableMovie+`/${movieid}`,{});
+  }
+  disableMovie(movieid:string){
+    return this.httpClient.patch<boolean>(movieapi.disableMovie+`/${movieid}`,{});
+  }
+  updateMovieWithGenre(genre:string,movieid:string){
+    return this.httpClient.patch<boolean>(movieapi.updateMovieWithGenre+`/${movieid}?genre=${genre}`,genre);
+  }
+  updateMovieWithGenres(genres:string[],movieid:string){
+    return this.httpClient.post<boolean>(movieapi.updateMovieWithGenres+`/${movieid}`,genres);
+  }
+
+  
 }

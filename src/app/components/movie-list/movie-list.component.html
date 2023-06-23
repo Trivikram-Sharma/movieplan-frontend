@@ -2,7 +2,9 @@
 <div *ngIf="adminLoggedIn">
 <a routerLink="/servicesList/addMovie">Add Movie</a>
 </div>
-
+<div *ngIf="adminLoggedIn">
+<a routerLink="/servicesList/editMovie">Edit Movie</a>
+</div>
 <div class="movie-container" *ngIf="loggedin">
     <form [formGroup]="movieForm">
     <div class="movie-card">

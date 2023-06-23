@@ -34,3 +34,7 @@ form .form-group{
     background-color: red;
     color: white;
 }
+.form-group .form-control-genre{
+    display: flex;
+    flex-direction: column;
+}

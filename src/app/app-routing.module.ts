@@ -14,6 +14,10 @@ import { AddmovieComponent } from './components/addmovie/addmovie.component';
 import { GenrelistComponent } from './components/genrelist/genrelist.component';
 import { AddgenreComponent } from './components/addgenre/addgenre.component';
 import { EditmovieComponent } from './components/editmovie/editmovie.component';
+import { ShowtimelistComponent } from './components/showtimelist/showtimelist.component';
+import { AddshowtimeComponent } from './components/addshowtime/addshowtime.component';
+import { AddresslistComponent } from './components/addresslist/addresslist.component';
+import { EditaddressComponent } from './components/editaddress/editaddress.component';
 
 const routes: Routes = [
   {path:"", redirectTo:"home",pathMatch:"full"},
@@ -23,14 +27,20 @@ const routes: Routes = [
   {path:"register",component:RegisterComponent},
   {path:"changepassword",component:ChangepasswordComponent},
   {path:"servicesList", component: ServiceComponent,
-  children:[{path:"ticketList",component:TicketListComponent},
-  {path:"movieList",component:MovieListComponent},
-  {path:"purchaseHistory",component:PurchaseListComponent},
-  {path:"searchList", component:SearchListComponent},
-  {path: "genreList", component: GenrelistComponent},
-  {path: "addMovie", component:AddmovieComponent},
-  {path:"addGenre",component: AddgenreComponent},
-  {path:"editMovie", component: EditmovieComponent}]},
+  children:[
+    {path:"ticketList",component:TicketListComponent},
+    {path:"movieList",component:MovieListComponent},
+    {path:"purchaseHistory",component:PurchaseListComponent},
+    {path:"searchList", component:SearchListComponent},
+    {path:"genreList", component:GenrelistComponent},
+    {path:"addMovie", component:AddmovieComponent},
+    {path:"addGenre",component:AddgenreComponent},
+    {path:"editMovie", component:EditmovieComponent},
+    {path:"showTimeList",component:ShowtimelistComponent},
+    {path:"addShowTime",component:AddshowtimeComponent},
+    {path:"addressList",component:AddresslistComponent},
+    {path:"editAddress",component:EditaddressComponent}
+  ]},
 ];
 
 @NgModule({

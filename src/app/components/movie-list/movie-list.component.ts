@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Admin } from 'src/interfaces/admin';
+import { Movie } from 'src/interfaces/movie';
 import { LoginService } from 'src/services/login/login.service';
 import { MovieService } from 'src/services/movie/movie.service';
 
@@ -21,7 +22,16 @@ export class MovieListComponent implements OnInit {
 
   loggedin:boolean = this.loginService.loggedin;
   adminLoggedIn:boolean = this.loginService.currentAdmin;
-  movieForm = new FormGroup({})
+  movieList:Movie[] = [];
+
+  getMovieList(){
+    this.movieService.getEnabledMovies()
+    .subscribe(
+      (data:Movie[]) => this.movieList = data
+    );
+    return this.movieList;
+  }
+
   toggleMovieEdit(id:string){
     this.movieService.setCurrentMovie(id);
   }

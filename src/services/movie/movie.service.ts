@@ -9,6 +9,8 @@ export class MovieService {
 
   constructor(private httpClient:HttpClient) { }
   currentMovie:any;
+  movieList:Movie[]=[];
+  movieAdded:boolean = false;
   getLatestMovieId(title:string|null|undefined,
      description:string|null|undefined,
      language:string|null|undefined,

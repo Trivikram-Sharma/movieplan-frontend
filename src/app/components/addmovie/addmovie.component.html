@@ -41,20 +41,20 @@
     <div class="form-group">
         <label>Status</label>
         <div class="form-control">
-        <input type="radio" formControlName="status" value="Enabled"> Enabled
+        <input type="radio" formControlName="status" value="enabled"> Enabled
         <input type="radio" formControlName="status" value="disabled"> Disabled
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" formArrayName="genres">
         <label>Genres | </label> <span (click)="addGenre()" id="AddGenreButton"> + </span> <br />
         <div class="form-control-genre" *ngFor="let g of genreControls;let i = index">
             <select [formControlName]="i">
-                <!-- <option *ngFor="let genre of allGenres()" value="genre.name">{{genre.name}}</option> -->
-                <option>Action</option>
+                <option *ngFor="let genre of allGenres()" [value]="genre.name">{{genre.name}}</option>
+                <!-- <option>Action</option>
                 <option>Comedy</option>
                 <option>Thriller</option>
                 <option>Suspense</option>
-                <option>Drama</option>
+                <option>Drama</option> -->
             </select>
             <span (click)="removeGenre(i)" id="RemoveGenreButton"> - </span>
         </div><br />

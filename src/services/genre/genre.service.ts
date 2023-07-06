@@ -8,7 +8,7 @@ import { Genre } from 'src/interfaces/genre';
 export class GenreService {
 
   constructor(private httpClient:HttpClient) { }
-
+  public allGenreList:Genre[] = [];
   getAllGenres(){
     return this.httpClient.get<Genre[]>(genreapi.getAllGenres);
   }
@@ -21,5 +21,13 @@ export class GenreService {
 
   deleteGenre(genre:Genre){
     return this.httpClient.delete<boolean>(genreapi.deleteGenre+`?name=${genre.name}`);
+  }
+
+  //UTILITY METHODS FOR CROSS COMPONENT COMMUNICATION
+  setAllGenreList(genrelist:Genre[]){
+    this.allGenreList = genrelist;
+  }
+  getAllGenreList(){
+    return this.allGenreList;
   }
 }

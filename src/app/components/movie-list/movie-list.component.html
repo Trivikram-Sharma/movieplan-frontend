@@ -1,6 +1,6 @@
 
 <div *ngIf="adminLoggedIn">
-<a routerLink="/servicesList/addMovie">Add Movie</a>
+<span (click)="redirectToAddMovie()">Add Movie</span>
 <a routerLink="/servicesList/editMovie">Edit Movie</a>
 </div>
 <!-- <div class="movie-container" *ngIf="loggedin">
@@ -43,10 +43,10 @@
     </div>
     </form>
 </div> -->
-<div class="movie-container" *ngIf="loggedin">
-    <div class="movie-card" *ngFor="let m of getMovieList()">
+<div class="movie-container" *ngIf="loggedin && movieList.length!==0">
+    <div class="movie-card" *ngFor="let m of movieList">
         <figure>
-            <img src="{{'../../../assets/movies/' + m.filename}}" alt="No Image Found">
+            <img src="file:///src/assets/movies/{{m.filename}}" alt="{{m.title}}" />
             <caption>
                 <button>Book Ticket</button><br>
                 <button *ngIf="adminLoggedIn">Edit Movie</button>
@@ -54,6 +54,6 @@
         </figure>
     </div>
 </div>
-<div *ngIf="!loggedin">
+<div *ngIf="!loggedin || movieList.length===0">
     No Movies found
 </div>

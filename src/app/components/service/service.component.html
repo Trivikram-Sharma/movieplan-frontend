@@ -2,7 +2,7 @@
     <div class="sidebar">
         <ul>
            <li><a routerLink="/servicesList/ticketList"> Tickets</a></li> 
-           <li><a routerLink="/servicesList/movieList">Movies</a></li> 
+           <li><a routerLink="/servicesList/movieList" (click)="setEnabledMovies()">Movies</a></li> 
            <li><a routerLink="/servicesList/searchList">Search History</a></li> 
            <li><a routerLink="/servicesList/purchaseHistory">Purchase History</a></li>
            <li *ngIf="adminLoggedin"><a routerLink="/servicesList/genreList">Genre List</a></li> 

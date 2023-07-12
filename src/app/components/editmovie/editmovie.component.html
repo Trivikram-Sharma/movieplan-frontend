@@ -19,6 +19,12 @@
             </select>
         </div>
         <div class="form-group">
+            <label>
+                Movie Poster/ Picture
+            </label>
+            <input type="file" class="form-control" formControlName="movieposter" [disabled]=true>
+        </div>
+        <div class="form-group">
             <label class="form-label">Description</label>
             <textarea class="form-control" formControlName="description">
 
@@ -26,22 +32,23 @@
         </div>
         <div class="form-group">
             <label class="form-label">releaseDate</label>
-            <input type="date" class="form-control" formControlName="releaseDate">
+            <input type="date" class="form-control" formControlName="releaseDate" [disabled]=true>
         </div>
         <div class="form-group">
             <label class="form-label">Status</label>
             <div class="form-control">
-                <input type="radio" formControlName="status" value="enabled">
-                <input type="radio" formControlName="status" value="disabled">
+                <input type="radio" formControlName="status" value="enabled">Enabled
+                <input type="radio" formControlName="status" value="disabled">Disabled
             </div>
         </div>
         <div class="form-group">
             <label class="form-label">Genres</label>
-            <div *ngFor="let g of allGenres(); let i = index">
+            <span class="add-genre">+</span><br>
+            <div *ngFor="let g of currentMovie.genres; let i = index">
                 <select>
-                    <option value="g.name">{{g.name}}</option>
+                    <option *ngFor="let ag of allGenres();let j = index" value="{{ag.name}}" [selected]="ag.name == g.name">{{g.name}}</option>
                 </select>
-                <span (click)="removeGenre(i)"> - </span> <br>
+                <span (click)="removeGenre(i)" class="remove-genre"> - </span> <br>
             </div>
         </div><br>
         <button type="submit">Edit Movie</button>

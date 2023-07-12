@@ -45,11 +45,15 @@
 </div> -->
 <div class="movie-container" *ngIf="loggedin && movieList.length!==0">
     <div class="movie-card" *ngFor="let m of movieList">
+        <!-- <pre>
+           {{m | json}}
+        </pre> -->
         <figure>
-            <img src="file:///src/assets/movies/{{m.filename}}" alt="{{m.title}}" />
+            
+            <img src="src/assets/movies/{{m.filename}}" alt="{{m.title}}" />
             <caption>
                 <button>Book Ticket</button><br>
-                <button *ngIf="adminLoggedIn">Edit Movie</button>
+                <button *ngIf="adminLoggedIn" (click)="toggleMovieEdit(m)">Edit Movie</button>
             </caption>
         </figure>
     </div>

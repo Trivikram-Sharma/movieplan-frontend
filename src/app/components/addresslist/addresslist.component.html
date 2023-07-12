@@ -1,4 +1,4 @@
-<a routerLink="servicesList/addAddress" *ngIf="adminLoggedIn">Add Address</a><br>
+<a (click)="redirectToAddAddress()" *ngIf="adminLoggedIn">Add Address</a><br>
 
 <table>
     <tr>
@@ -19,7 +19,7 @@
         <td>{{a.state}}</td>
         <td>{{a.country}}</td>
         <td>{{a.pincode}}</td>
-        <td><a routerLink="servicesList/editAddress">Edit</a>/
-            <a (click)="deleteAddress">Delete</a></td>
+        <td><a (click)="redirectToEditAddress(a)" class="edit-address">Edit</a>/
+            <a (click)="deleteAddress(a)" class="delete-address">Delete</a></td>
     </tr>
 </table>

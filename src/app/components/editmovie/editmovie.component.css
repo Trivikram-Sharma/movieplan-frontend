@@ -1,0 +1,18 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.form-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.add-genre{
+    background-color: green;
+    color: white;
+}
+.remove-genre{
+    background-color: red;
+    color: white;
+}

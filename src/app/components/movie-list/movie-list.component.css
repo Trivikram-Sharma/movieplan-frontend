@@ -9,7 +9,7 @@
     width: 250px;
     height: 300px;
     margin: 60px;
-    border: 10px;
+    border: 10px solid red;
     margin-bottom: 70px;
 }
 figcaption{

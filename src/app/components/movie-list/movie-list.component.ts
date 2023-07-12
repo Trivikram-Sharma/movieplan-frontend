@@ -26,7 +26,7 @@ export class MovieListComponent implements OnInit {
   loggedin:boolean = this.loginService.loggedin;
   adminLoggedIn:boolean = this.loginService.currentAdmin;
   movieList:Movie[] = this.movieService.movieList;
-
+  movieForm = new FormGroup({})
   // getMovieList(){
   //   this.movieService.getEnabledMovies()
   //   .subscribe(
@@ -51,7 +51,8 @@ export class MovieListComponent implements OnInit {
     this.router.navigate(['/servicesList/addMovie']);
   }
 
-  toggleMovieEdit(id:string){
-    this.movieService.setCurrentMovie(id);
+  toggleMovieEdit(movie:Movie){
+    this.movieService.setCurrentMovie(movie);
+    this.router.navigate(['/servicesList/editMovie'])
   }
 }

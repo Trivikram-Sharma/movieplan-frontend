@@ -27,9 +27,11 @@ export class MovieService {
     return this.httpClient.get<Movie>(movieapi.getMovieWithId+`?id=${id}`);
   }
 
-  setCurrentMovie(id:string){
-    this.getMovieWithId(id)
-    .subscribe( (data:Movie) => this.currentMovie = data);
+  setCurrentMovie(movie:Movie){
+    this.currentMovie = movie;
+  }
+  getCurrentMovie(){
+    return this.currentMovie;
   }
 
   //Movie update methods

@@ -10,9 +10,25 @@ export class AddressService {
 
   constructor(private httpClient: HttpClient) { }
   currentAddress:Address|null = null;
+  allAddressesList:Address[] = [];
+
+
+
   setCurrentAddress(address:Address){
     this.currentAddress = address;
   }
+  getCurrentAddress(){
+    return this.currentAddress;
+  }
+  updateAllAddressesList(addressList:Address[]){
+    console.log('addressList argument in service ->',addressList);
+    this.allAddressesList = addressList;
+    console.log('this.allAddressesList ->',this.allAddressesList);
+  }
+  getAllAddressesList(){
+    return this.allAddressesList;
+  }
+
   getAddress(doorNo:string){
     return this.httpClient.get<Address>(addressapi.getAddress+`/${doorNo}`);
   }
@@ -74,6 +90,7 @@ export class AddressService {
 
   }
 
+  //DELETE APIs
   deleteAddress(building:string){
     return this.httpClient.delete<boolean>(addressapi.deleteAddress+`/${building}`);
   }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddressService } from 'src/services/address/address.service';
-
+import { Address } from 'src/interfaces/address';
 @Component({
   selector: 'app-addaddress',
   templateUrl: './addaddress.component.html',
@@ -17,16 +17,37 @@ export class AddaddressComponent implements OnInit {
   }
 
   addAddressForm = new FormGroup({
-    building: new FormControl(''),
-    street: new FormControl(''),
-    area: new FormControl(''),
-    city: new FormControl(''),
-    state: new FormControl(''),
-    country: new FormControl(''),
-    pincode: new FormControl('')
+    building: new FormControl('',Validators.required),
+    street: new FormControl('',Validators.required),
+    area: new FormControl('',Validators.required),
+    city: new FormControl('',Validators.required),
+    state: new FormControl('',Validators.required),
+    country: new FormControl('',Validators.required),
+    pincode: new FormControl('',Validators.required)
   });
 
   addAddress(){
-
+    let a:Address = {
+      building: <string>this.addAddressForm.get('building')?.value,
+      street: <string>this.addAddressForm.get('street')?.value,
+      area: <string>this.addAddressForm.get('area')?.value,
+      city: <string>this.addAddressForm.get('city')?.value,
+      state: <string>this.addAddressForm.get('state')?.value,
+      country: <string>this.addAddressForm.get('country')?.value,
+      pincode: <string>this.addAddressForm.get('pincode')?.value
+    };
+    this.addressService.addAddress(a)
+    .subscribe(
+      (data:boolean) => {
+        if(data){
+          alert("The address has been added successfully! Navigating back to the addresses List!");
+          this.router.navigate(['/servicesList/addressList']);
+        }
+        else {
+          alert("The Address is NOT added successfully! Navigating back to the addresses List!");
+          this.router.navigate(['/servicesList/addressList']);
+        }
+      }
+    );
   }
 }

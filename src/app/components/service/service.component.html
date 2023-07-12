@@ -6,6 +6,7 @@
            <li><a routerLink="/servicesList/searchList">Search History</a></li> 
            <li><a routerLink="/servicesList/purchaseHistory">Purchase History</a></li>
            <li *ngIf="adminLoggedin"><a routerLink="/servicesList/genreList">Genre List</a></li> 
+           <li *ngIf="adminLoggedin"><a routerLink="/servicesList/addressList" (click)="setAddressesList()">Addresses</a></li>
         </ul>
     </div>
 

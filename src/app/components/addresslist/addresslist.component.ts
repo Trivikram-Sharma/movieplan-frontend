@@ -15,17 +15,25 @@ export class AddresslistComponent implements OnInit {
   constructor(private loginService:LoginService,
     private addressService:AddressService,
     private router:Router) { }
-
+  addressList:Address[] = [];
   ngOnInit(): void {
+    this.addressList = this.addressService.getAllAddressesList();
+    console.log('this.addressService.allAddressesList ->',this.addressList);
   }
   adminLoggedIn:Admin = this.loginService.currentAdmin;
+  
 
-  addressList:Address[] = [];
-
-  getAllAddresses(){
-    this.addressService.getAllAddresses()
-    .subscribe((data:Address[]) => this.addressList = data);
-    return this.addressList;
+  // getAllAddresses(){
+  //   this.addressService.getAllAddresses()
+  //   .subscribe((data:Address[]) => this.addressList = data);
+  //   return this.addressList;
+  // }
+  redirectToAddAddress(){
+    this.router.navigate(['/servicesList/addAddress']);
+  }
+  redirectToEditAddress(address:Address){
+    this.addressService.setCurrentAddress(address);
+    this.router.navigate(['/servicesList/editAddress']);
   }
 
   deleteAddress(address:Address){
@@ -35,14 +43,20 @@ export class AddresslistComponent implements OnInit {
     let addressDeleted = false;
     if(deleteConfirm){
       this.addressService.deleteAddress(<string>address.building)
-      .subscribe( (data:boolean) => addressDeleted = data);
+      .subscribe( (data:boolean) => 
+      {
+        if(data){
+          alert(`The address has been deleted successfully!`);
+        }
+        else {
+          alert(`Something went wrong!`);
+        }
+      }
+      
+      
+      );
 
-      if(addressDeleted){
-        alert(`The address has been deleted successfully!`);
-      }
-      else {
-        alert(`Something went wrong!`);
-      }
+      
     }
     return;
   }

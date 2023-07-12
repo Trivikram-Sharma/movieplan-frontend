@@ -8,7 +8,19 @@ import { Showtime } from 'src/interfaces/showtime';
 export class ShowtimeService {
 
   constructor(private httpClient: HttpClient) { }
+  allShowTimes:Showtime[] = [];
 
+  //UTILITY FUNCTIONS FOR CROSS COMPONENT COMMUNICATION
+  setAllShowTimes(showtimes:Showtime[]){
+    this.allShowTimes = showtimes;
+  }
+  getAllShowTimeList(){
+    return this.allShowTimes;
+  }
+
+
+
+  //API CALL SERVICE METHODS
   addShowTime(showtime:Showtime){
     return this.httpClient.post<boolean>(showtimeapi.addShowTime,showtime);
   }
@@ -18,8 +30,8 @@ export class ShowtimeService {
   getAllShowTimes(){
     return this.httpClient.get<Showtime[]>(showtimeapi.getAllShowTimes);
   }
-  deleteShowTime(name:string){
-    return this.httpClient.delete<boolean>(showtimeapi.deleteShowTime+`/${name}`);
+  deleteShowTime(showtime:Showtime){
+    return this.httpClient.delete<boolean>(showtimeapi.deleteShowTime+`/${showtime.showName}?starttime=${showtime.startTime}&endtime=${showtime.endTime}`);
   }
 
 }

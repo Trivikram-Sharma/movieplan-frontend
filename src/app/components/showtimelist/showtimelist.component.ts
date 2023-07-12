@@ -19,13 +19,13 @@ export class ShowtimelistComponent implements OnInit {
   }
   message:any;
   adminLoggedIn:Admin = this.loginService.currentAdmin;
-  showtimelist:Showtime[] = [];
+  showtimelist:Showtime[] = this.showtimeService.getAllShowTimeList();
   
-  getAllShowTimes(){
-    this.showtimeService.getAllShowTimes()
-    .subscribe( (data:Showtime[]) => this.showtimelist = data);
-    return this.showtimelist;
-  }
+  // getAllShowTimes(){
+  //   this.showtimeService.getAllShowTimes()
+  //   .subscribe( (data:Showtime[]) => this.showtimelist = data);
+  //   return this.showtimelist;
+  // }
 
   getScreeningsOfShowtime(showtime:Showtime){
     if(showtime.screenings){
@@ -42,15 +42,16 @@ export class ShowtimelistComponent implements OnInit {
     let x = confirm(`Are you sure you want to delete the showtime ${showtime.showName}?`);
     let showtimedeleted = false;
     if(x){
-      this.showtimeService.deleteShowTime(<string>showtime.showName)
-      .subscribe( (data:boolean) => showtimedeleted = data);
-      if(showtimedeleted){
-        alert(`Showtime ${showtime.showName} deleted successfully!!`);
-        this.router.navigate(['/servicesList/showTimeList']);
-      }
-      else {
-        alert(`Something went wrong!`);
-      }
+      this.showtimeService.deleteShowTime(showtime)
+      .subscribe( (showtimedeleted:boolean) => {
+        if(showtimedeleted){
+          alert(`Showtime ${showtime.showName} deleted successfully!!`);
+          this.router.navigate(['/servicesList/showTimeList']);
+        }
+        else {
+          alert(`Something went wrong!`);
+        }
+      });
     }
   }
 

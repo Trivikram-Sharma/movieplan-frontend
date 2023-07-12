@@ -12,6 +12,6 @@ table{
 table tr td{
     text-align: center;
 }
-td {
+td,th {
     border: 1px solid crimson;
 }

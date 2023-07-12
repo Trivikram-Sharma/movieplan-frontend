@@ -31,16 +31,18 @@ export class AddshowtimeComponent implements OnInit {
       startTime:<Time><unknown>this.addShowtimeForm.get('startTime')?.value,
       endTime:<Time><unknown>this.addShowtimeForm.get('endTime')?.value
     };
-    let showtimeadded = false;
+    // let showtimeadded = false;
     this.showtimeService.addShowTime(showtime)
-    .subscribe( (data:boolean) => showtimeadded = data);
+    .subscribe( (showtimeadded:boolean) => {
 
-    if(showtimeadded){
-      alert(`Showtime ${showtime.showName} added Successfully!`);
-      this.router.navigate(['/servicesList/showTimeList']);
-    }
-    else {
-      alert(`Something went wrong!`);
-    }
+      if(showtimeadded){
+        alert(`Showtime ${showtime.showName} added Successfully!`);
+        this.router.navigate(['/servicesList/showTimeList']);
+      }
+      else {
+        alert(`Something went wrong!`);
+      }
+    });
+
   }
 }

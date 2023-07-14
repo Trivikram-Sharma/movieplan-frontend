@@ -17,4 +17,8 @@ export default class theatreapi{
     public static updateTheatreScreens = this.prefix + this.theatreprefix + "/update/screen";
     public static updateTheatreAddress = this.prefix + this.theatreprefix + "/update/address";
 
+    //DELETE APIs
+    public static deleteAllTheatreScreens = this.prefix + this.theatreprefix + "/delete/screens";
+    public static deleteTheatre = this.prefix + this.theatreprefix + "/delete";
+
 }

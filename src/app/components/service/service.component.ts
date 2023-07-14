@@ -6,6 +6,8 @@ import { AddressService } from 'src/services/address/address.service';
 import { Address } from 'src/interfaces/address';
 import { ShowtimeService } from 'src/services/showtime/showtime.service';
 import { Showtime } from 'src/interfaces/showtime';
+import { TheatreService } from 'src/services/theatre/theatre.service';
+import { Theatre } from 'src/interfaces/theatre';
 @Component({
   selector: 'app-service',
   templateUrl: './service.component.html',
@@ -16,21 +18,36 @@ export class ServiceComponent implements OnInit {
   constructor(private loginService:LoginService,
     private movieService:MovieService,
     private addressService: AddressService,
-    private showtimeService: ShowtimeService) { }
+    private showtimeService: ShowtimeService,
+    private theatreService: TheatreService) { }
 
   ngOnInit(): void {
   }
   loggedin:boolean = this.loginService.loggedin;
   adminLoggedin:boolean = this.loginService.adminLoggedIn;
+  userLoggedin:boolean = this.loginService.userLoggedIn;
 
-  setEnabledMovies(){
-    console.log("Set Enabled Movies Event Handler called!")
-    this.movieService.getEnabledMovies()
-    .subscribe( (data:Movie[]) => {
-      this.movieService.movieList = data;
-      console.log('data comming ->',data);
-      console.log('Data set? ->',this.movieService.movieList);
-    });
+  setMovies(){
+    console.log("Set Movies Event Handler called!");
+    if(this.userLoggedin){
+
+      this.movieService.getEnabledMovies()
+      .subscribe( (data:Movie[]) => {
+        this.movieService.setMovieList(data);
+        console.log('enabled movies data comming ->',data);
+        console.log('Data set? ->',this.movieService.movieList);
+      });
+    }
+    else if(this.adminLoggedin){
+      this.movieService.getAllMovies()
+      .subscribe(
+        (data:Movie[]) => {
+        this.movieService.setMovieList(data);  
+        console.log('all movies data comming ->',data);
+        console.log('Data set? ->',this.movieService.movieList);
+        }
+      );
+    }
   }
 
   setAddressesList(){
@@ -54,6 +71,18 @@ export class ServiceComponent implements OnInit {
         this.showtimeService.allShowTimes = data;
         console.log('Is showtime data comming?->',data);
         console.log('All Showtime List? ->',this.showtimeService.allShowTimes);
+      }
+    );
+  }
+
+  setTheatreList(){
+    console.log('Set Theatre List Event Handler Called!');
+    this.theatreService.getAllTheatres()
+    .subscribe(
+      (data: Theatre[]) => {
+        this.theatreService.setAllTheatreList(data);
+        console.log(`Is theatre data comming? -> `,data);
+        console.log(`All Theatres managed ->`,this.theatreService.allTheatreList);
       }
     );
   }

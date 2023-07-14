@@ -27,21 +27,28 @@ export class EditmovieComponent implements OnInit {
     title: new FormControl(this.currentMovie.title),
     price: new FormControl(this.currentMovie.price),
     language: new FormControl(this.currentMovie.language),
+    movieposter: new FormControl({value: this.currentMovie.filename, disabled:true}),
     description: new FormControl(this.currentMovie.description),
-    releaseDate: new FormControl(this.currentMovie.releaseDate),
+    releaseDate: new FormControl({value:this.currentMovie.releaseDate,disabled: true}),
     status: new FormControl(this.currentMovie.status),
     genres: new FormArray(this.currentMovie.genres.map(
-      x => new FormControl(<string>x.name)
+      x => {
+        console.log(x);
+        return new FormControl(<string>x.name)
+        
+      }
     ))
   });
 
-  genrelist:Genre[] = [];
-  allGenres(){
-    this.genreService.getAllGenres()
-    .subscribe( (data:Genre[]) => this.genrelist = data );
-    return this.genrelist;
+  genrelist:Genre[] = this.genreService.getAllGenreList();
+  
+  addGenre(){
+    console.log('addGenre() invoked!');
+    (<FormArray>this.editMovieForm.get('genres')).push(new FormControl('Action'));
   }
-
+  get editGenreControls(){
+    return (<FormArray>this.editMovieForm.get('genres'))?.controls;
+  }
   removeGenre(i:number){
     (<FormArray>this.editMovieForm.get('genres')).removeAt(i);
   }

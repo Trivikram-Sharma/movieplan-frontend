@@ -1,0 +1,26 @@
+form{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.form-group{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.form-label{
+    width: 120px;
+}
+#address-selection{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+} 
+fieldset{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

@@ -35,6 +35,10 @@ import { AddressService } from 'src/services/address/address.service';
 import { AddresslistComponent } from './components/addresslist/addresslist.component';
 import { AddaddressComponent } from './components/addaddress/addaddress.component';
 import { EditaddressComponent } from './components/editaddress/editaddress.component';
+import { TheatrelistComponent } from './components/theatrelist/theatrelist.component';
+import { AddtheatreComponent } from './components/addtheatre/addtheatre.component';
+import { EdittheatreComponent } from './components/edittheatre/edittheatre.component';
+import { TheatreService } from 'src/services/theatre/theatre.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,10 @@ import { EditaddressComponent } from './components/editaddress/editaddress.compo
     AddshowtimeComponent,
     AddresslistComponent,
     AddaddressComponent,
-    EditaddressComponent
+    EditaddressComponent,
+    TheatrelistComponent,
+    AddtheatreComponent,
+    EdittheatreComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +78,7 @@ import { EditaddressComponent } from './components/editaddress/editaddress.compo
   ],
   providers: [LoginService,RegistrationService, TicketService,
      MovieService, GenreService, ToastService,
-    ShowtimeService,AddressService],
+    ShowtimeService,AddressService, TheatreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

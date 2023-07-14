@@ -7,6 +7,7 @@ import { GenreService } from 'src/services/genre/genre.service';
 import { LoginService } from 'src/services/login/login.service';
 import { MovieService } from 'src/services/movie/movie.service';
 import { Genre } from 'src/interfaces/genre';
+import { User } from 'src/interfaces/user';
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
@@ -20,12 +21,13 @@ export class MovieListComponent implements OnInit {
     private genreService: GenreService) { }
 
   ngOnInit(): void {
-    this.movieService.getEnabledMovies().subscribe((data:Movie[]) => this.movieList = data );
+    // this.movieService.getEnabledMovies().subscribe((data:Movie[]) => this.movieList = data );
   }
 
   loggedin:boolean = this.loginService.loggedin;
   adminLoggedIn:boolean = this.loginService.currentAdmin;
-  movieList:Movie[] = this.movieService.movieList;
+  userLoggedIn:User = this.loginService.currentUser;
+  movieList:Movie[] = this.movieService.getMovieList();
   movieForm = new FormGroup({})
   // getMovieList(){
   //   this.movieService.getEnabledMovies()
@@ -47,12 +49,34 @@ export class MovieListComponent implements OnInit {
       genrelist = data;
       this.genreService.setAllGenreList(genrelist);
     });
-    //this.genreService.allGenreList = genrelist;
     this.router.navigate(['/servicesList/addMovie']);
+    //this.genreService.allGenreList = genrelist;
   }
-
+  
   toggleMovieEdit(movie:Movie){
     this.movieService.setCurrentMovie(movie);
-    this.router.navigate(['/servicesList/editMovie'])
+    this.genreService.getAllGenres()
+    .subscribe( (data:Genre[]) => {
+        this.genreService.setAllGenreList(data);
+        console.log('allGenreList set successfully? ->',this.genreService.allGenreList);
+        this.router.navigate(['/servicesList/editMovie']);
+      });
+  }
+
+  deleteMovie(movie:Movie){
+    this.movieService.deleteMovie(<string>movie.id)
+    .subscribe(
+      (data:boolean) => {
+        if(data) {
+          alert(`Movie ${movie.title} deleted Successfully!`);
+          this.router.navigate(['/servicesList/movieList']);
+        }
+        else {
+          alert(`Movie ${movie.title} NOT deleted Successfully! Please check the backend.`);
+          this.router.navigate(['/servicesList/movieList']);
+
+        }
+      }
+    );
   }
 }

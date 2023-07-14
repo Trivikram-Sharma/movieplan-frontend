@@ -22,7 +22,7 @@
             <label>
                 Movie Poster/ Picture
             </label>
-            <input type="file" class="form-control" formControlName="movieposter" [disabled]=true>
+            <input type="file" class="form-control" formControlName="movieposter">
         </div>
         <div class="form-group">
             <label class="form-label">Description</label>
@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
             <label class="form-label">releaseDate</label>
-            <input type="date" class="form-control" formControlName="releaseDate" [disabled]=true>
+            <input type="date" class="form-control" formControlName="releaseDate">
         </div>
         <div class="form-group">
             <label class="form-label">Status</label>
@@ -43,10 +43,10 @@
         </div>
         <div class="form-group">
             <label class="form-label">Genres</label>
-            <span class="add-genre">+</span><br>
-            <div *ngFor="let g of currentMovie.genres; let i = index">
+            <span class="add-genre" (click)="addGenre()">+</span><br>
+            <div *ngFor="let g of editGenreControls; let i = index">
                 <select>
-                    <option *ngFor="let ag of allGenres();let j = index" value="{{ag.name}}" [selected]="ag.name == g.name">{{g.name}}</option>
+                    <option *ngFor="let ag of genrelist;let j = index" value="{{g.value}}">{{ag.name}}</option>
                 </select>
                 <span (click)="removeGenre(i)" class="remove-genre"> - </span> <br>
             </div>

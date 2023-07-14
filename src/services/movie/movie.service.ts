@@ -34,6 +34,13 @@ export class MovieService {
     return this.currentMovie;
   }
 
+  setMovieList(movielist:Movie[]){
+    this.movieList = movielist;
+  }
+  getMovieList(){
+    return this.movieList;
+  }
+
   //Movie update methods
   updateMovieTitle(title:string,movieid:string){
     return this.httpClient.patch<boolean>(movieapi.updateMovieTitle+`/${movieid}?title=${title}`,title);

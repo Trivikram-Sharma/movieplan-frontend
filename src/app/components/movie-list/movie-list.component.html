@@ -43,7 +43,7 @@
     </div>
     </form>
 </div> -->
-<div class="movie-container" *ngIf="loggedin && movieList.length!==0">
+<div class="movie-container" *ngIf="userLoggedIn && movieList.length!==0">
     <div class="movie-card" *ngFor="let m of movieList">
         <!-- <pre>
            {{m | json}}
@@ -53,11 +53,26 @@
             <img src="src/assets/movies/{{m.filename}}" alt="{{m.title}}" />
             <caption>
                 <button>Book Ticket</button><br>
+                <!-- <button *ngIf="adminLoggedIn" (click)="toggleMovieEdit(m)">Edit Movie</button> -->
+            </caption>
+        </figure>
+    </div>
+    
+</div>
+
+<div class="movie-container" *ngIf="adminLoggedIn && movieList.length!==0">
+    <div class="movie-card" *ngFor="let m of movieList">
+        <figure>  
+            <img src="src/assets/movies/{{m.filename}}" alt="{{m.title}}" />
+            <caption>
+                <button>Book Ticket</button><br>
                 <button *ngIf="adminLoggedIn" (click)="toggleMovieEdit(m)">Edit Movie</button>
+                <button *ngIf="adminLoggedIn" (click)="deleteMovie(m)">Delete Movie</button>
             </caption>
         </figure>
     </div>
 </div>
+
 <div *ngIf="!loggedin || movieList.length===0">
     No Movies found
 </div>

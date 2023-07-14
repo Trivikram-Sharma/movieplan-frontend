@@ -1,0 +1,39 @@
+
+<form [formGroup]="addTheatreForm" (ngSubmit)="addTheatre()">
+    <div class="form-group">
+        <div class="form-label">Id</div>
+        <input type="text" formControlName="id">
+    </div>
+    <div class="form-group">
+        <div class="form-label">Theatre Name</div>
+        <input type="text" formControlName="name" value="">
+    </div>
+    <div class="form-group">
+        <div class="form-label">Number Of Screens</div>
+        <input type="number" min="0" max="15" formControlName="screens">
+    </div>
+    <div class="form-group" id="address-selection">
+        <div class="form-label">Address</div><br>
+        <fieldset formGroupName="address">
+            <select (change)="spinUpStates()" formControlName="country">
+                <option value="{{a.country}}" *ngFor="let a of allAddressesList">{{a.country}}</option>
+            </select>
+            <select (change)="spinUpCities()" *ngIf="containsState" formControlName="state">
+                <option value="{{a.state}}" *ngFor="let a of stateListFiltered">{{a.state}}</option>
+            </select>
+            <select (change)="spinUpAreas()" *ngIf="containsCity" formControlName="city">
+                <option value="{{a.city}}" *ngFor="let a of cityListFiltered">{{a.city}}</option>
+            </select>
+            <select (change)="spinUpStreets()" *ngIf="containsArea" formControlName="area">
+                <option value="{{a.area}}" *ngFor="let a of areaListFiltered">{{a.area}}</option>
+            </select>
+            <select (change)="spinUpBuildings()" *ngIf="containsStreet" formControlName="street">
+                <option value="{{a.street}}" *ngFor="let a of streetListFiltered">{{a.street}}</option>
+            </select>
+            <select *ngIf="containsBuilding" formControlName="building">
+                <option value="{{a.building}}" *ngFor="let a of buildingListFiltered">{{a.building}}</option>
+            </select>
+        </fieldset>
+    </div>
+    <button type="submit">Add Theatre</button>
+</form>

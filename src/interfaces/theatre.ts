@@ -1,9 +1,9 @@
 import { Screening } from "./screening";
 import { Address } from "./address";
 export interface Theatre {
-    id:Number;
+    id?:Number;
     name:String;
     screens:Number;
     address:Address;
-    screenings:Screening[];
+    screenings?:Screening[];
 }

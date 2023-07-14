@@ -19,6 +19,9 @@ import { AddshowtimeComponent } from './components/addshowtime/addshowtime.compo
 import { AddresslistComponent } from './components/addresslist/addresslist.component';
 import { EditaddressComponent } from './components/editaddress/editaddress.component';
 import { AddaddressComponent } from './components/addaddress/addaddress.component';
+import { TheatrelistComponent } from './components/theatrelist/theatrelist.component';
+import { AddtheatreComponent } from './components/addtheatre/addtheatre.component';
+import { EdittheatreComponent } from './components/edittheatre/edittheatre.component';
 
 const routes: Routes = [
   {path:"", redirectTo:"home",pathMatch:"full"},
@@ -41,7 +44,10 @@ const routes: Routes = [
     {path:"addShowTime",component:AddshowtimeComponent},
     {path:"addressList",component:AddresslistComponent},
     {path:"editAddress",component:EditaddressComponent},
-    {path: "addAddress", component: AddaddressComponent}
+    {path: "addAddress", component: AddaddressComponent},
+    {path:"theatreList",component: TheatrelistComponent},
+    {path: "addTheatre",component: AddtheatreComponent},
+    {path: "editTheatre",component: EdittheatreComponent}
   ]},
 ];
 

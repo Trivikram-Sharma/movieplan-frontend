@@ -1,0 +1,24 @@
+<p>theatrelist works!</p>
+
+<div *ngIf="adminLoggedIn">
+    <span (click)="redirectToAddTheatre()">Add Theatre</span>
+    <table>
+        <tr>
+           <th>Id</th> 
+           <th>Theatre Name</th> 
+           <th>Number Of Screens</th> 
+           <th>Address</th> 
+           <th>Movies Being Screened</th>
+           <th colspan="2">Edit/Delete</th>
+        </tr>
+        <tr *ngFor="let t of theatreList">
+           <td>{{t.id}}</td>
+           <td>{{t.name}}</td>
+           <td>{{t.screens}}</td>
+           <td>{{addressString(t.address)}}</td>
+           <td>{{screeningGroups(t.screenings)}}</td>
+           <td><a href="#" (click)="editTheatre(t)">Edit</a></td>
+           <td><a href="#" (click)="deleteTheatre(t)">Delete</a></td>
+        </tr>
+    </table>
+</div>

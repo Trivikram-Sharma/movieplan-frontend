@@ -39,6 +39,10 @@ import { TheatrelistComponent } from './components/theatrelist/theatrelist.compo
 import { AddtheatreComponent } from './components/addtheatre/addtheatre.component';
 import { EdittheatreComponent } from './components/edittheatre/edittheatre.component';
 import { TheatreService } from 'src/services/theatre/theatre.service';
+import { ScreeningService } from 'src/services/screening/screening.service';
+import { ScreeninglistComponent } from './components/screeninglist/screeninglist.component';
+import { EditscreeningComponent } from './components/editscreening/editscreening.component';
+import { AddScreeningComponent } from './components/add-screening/add-screening.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +71,10 @@ import { TheatreService } from 'src/services/theatre/theatre.service';
     EditaddressComponent,
     TheatrelistComponent,
     AddtheatreComponent,
-    EdittheatreComponent
+    EdittheatreComponent,
+    ScreeninglistComponent,
+    EditscreeningComponent,
+    AddScreeningComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +85,7 @@ import { TheatreService } from 'src/services/theatre/theatre.service';
   ],
   providers: [LoginService,RegistrationService, TicketService,
      MovieService, GenreService, ToastService,
-    ShowtimeService,AddressService, TheatreService],
+    ShowtimeService,AddressService, TheatreService, ScreeningService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

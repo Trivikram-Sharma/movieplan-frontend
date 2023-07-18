@@ -18,7 +18,7 @@ export class EditaddressComponent implements OnInit {
   }
   currentAddress:Address = <Address>this.addressService.getCurrentAddress();
   editAddressForm = new FormGroup({
-    building: new FormControl(this.currentAddress.building, Validators.required),
+    building: new FormControl({value:this.currentAddress.building,disabled:true}, Validators.required),
     street: new FormControl(this.currentAddress.street, Validators.required),
     area: new FormControl(this.currentAddress.area, Validators.required),
     city: new FormControl(this.currentAddress.city, Validators.required),
@@ -39,9 +39,11 @@ export class EditaddressComponent implements OnInit {
       country: <string>this.editAddressForm.get('country')?.value,
       pincode: <string>this.editAddressForm.get('pincode')?.value,
     };
+    console.log(this.editAddressForm);
     this.addressService.updateAddress(newAddress, <string>newAddress.building)
     .subscribe(
       (addressUpdated:Address) => {
+        console.log(addressUpdated);
         if(addressUpdated.building == this.editAddressForm.get('building')?.value){
           alert(`Address Updated successfully!`);
           this.router.navigate(['/servicesList/addressList']);

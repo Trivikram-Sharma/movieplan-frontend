@@ -1,0 +1,19 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.form-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#address-editing{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}fieldset{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

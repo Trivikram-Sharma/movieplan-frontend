@@ -1,0 +1,45 @@
+<form [formGroup]="esF" (ngSubmit)="editScreening()">
+    <div class="form-group">
+        <div class="from-label">Screening Id</div>
+        <input type="text" formControlName="id">
+    </div>
+    <div class="form-group">
+        <div class="form-label">Theatre</div>
+        <select formControlName="theatre">
+            <option *ngFor="let t of theatreList;let ti=index" value="{{t.id}}" [selected]="t.id === currentScreening.theatre.id">
+                {{t.name}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <div class="form-label">Movie</div>
+        <select formControlName="movie">
+            <option *ngFor="let m of enabledMoviesList" value={{m.id}} [selected]="m.id === currentScreening.movie.id">
+                {{m.title}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <div class="form-label">Showtime</div>
+        <select formControlName="showtime">
+            <option *ngFor="let sh of showtimeList" [selected]="sh.id === currentScreening.showTime.id" value="{{sh.id}}">
+                {{sh.showName}}
+            </option>
+            
+        </select>
+    </div>
+    <div class="form-group">
+        <div class="form-label">Date</div>
+        <input type="date" formControlName="date">
+    </div>
+    <div class="form-group">
+        <div class="form-label">Status</div>
+        <select formControlName="status">
+            <option value="Not Started">Not Started</option>
+            <option value="Started">Started</option>
+            <option value="Running">Running</option>
+            <option value="Closed">Closed</option>
+        </select>
+    </div>
+    <button type="submit">Edit Screening</button>
+</form>

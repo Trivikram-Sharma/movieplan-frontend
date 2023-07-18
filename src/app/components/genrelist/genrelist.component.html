@@ -9,7 +9,7 @@
             <th>Genre Name</th>
             <th>Delete</th>
         </tr>
-        <tr *ngFor="let g of allGenres()">
+        <tr *ngFor="let g of genreList">
             <td>{{g.id}}</td>
             <td>{{g.name}}</td>
             <td><a click="deleteGenre(g)">Delete</a></td>

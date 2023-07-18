@@ -3,10 +3,10 @@ import { Showtime } from "./showtime";
 import { Theatre } from "./theatre";
 
 export interface Screening {
-    id: Number;
+    id?: Number;
     theatre : Theatre;
     movie : Movie;
     showTime: Showtime;
     date:Date;
-    status:String;
+    status?:String;
 }

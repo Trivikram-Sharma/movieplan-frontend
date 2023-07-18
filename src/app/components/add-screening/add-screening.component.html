@@ -1,0 +1,28 @@
+
+<form [formGroup]="addScreeningForm" (ngSubmit)="addScreening()">
+    <div class="form-group">
+        <div class="form-label">Theatre</div>
+        <select formControlName="theatre">
+            <option *ngFor="let t of theatreList; let ti=index" value="{{t.id}}">{{t.name}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <div class="form-label">Movie</div>
+        <select formControlName="movie">
+            <option *ngFor="let m of enabledMovieList" value="{{m.id}}">{{m.title}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <div class="form-label">ShowTime</div>
+        <div class="form-control">
+            <select formControlName="showtime">
+                <option *ngFor="let sh of showtimeList" value="{{sh.id}}">{{sh.showName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-label">Date</div>
+        <input type="date" formControlName="date">
+    </div>
+    <button type="submit">Add Screening</button>
+</form>

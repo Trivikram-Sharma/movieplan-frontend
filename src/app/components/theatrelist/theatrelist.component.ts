@@ -4,7 +4,7 @@ import { LoginService } from 'src/services/login/login.service';
 import { TheatreService } from 'src/services/theatre/theatre.service';
 import { Theatre } from 'src/interfaces/theatre';
 import { Address } from 'src/interfaces/address';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Screening } from 'src/interfaces/screening';
 @Component({
   selector: 'app-theatrelist',
@@ -12,29 +12,34 @@ import { Screening } from 'src/interfaces/screening';
   styleUrls: ['./theatrelist.component.css']
 })
 export class TheatrelistComponent implements OnInit {
-
+  theatreList:Theatre[] = [];
+  allScreeningList: Screening[] = [];
   constructor(private loginService:LoginService,
     private theatreService:TheatreService,
     private addressService:AddressService,
-    private router: Router) { }
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.data.forEach(
+      data => {
+        this.theatreList = data['data']['theatres']
+        this.allScreeningList = data['data']['screenings'];
+      }
+    );
   }
   adminLoggedIn = this.loginService.adminLoggedIn;
-  theatreList:Theatre[] = this.theatreService.getAllTheatreList();
+  // theatreList:Theatre[] = this.theatreService.getAllTheatreList();
 
   addressString(address:Address){
     return `${address.building}
-    ${address.street}
-    ${address.area}
-    ${address.city}
-    ${address.state}
-    ${address.country}
-    ${address.pincode}`;
+    ${address.area}\n
+    ${address.city}`;
   }
-  screeningGroups(screenings:Screening[]|undefined):string{
-    if(screenings){
-      return screenings.map(s => s.movie.title).join(',');
+  screeningGroups(t:Theatre):string{
+    if(t){
+      return this.allScreeningList.filter(s => s.theatre.id == t.id)
+      .map(s => `${s.movie.title}(${s.movie.language})`).join(',');
     }
     else {
       return '';
@@ -51,14 +56,14 @@ export class TheatrelistComponent implements OnInit {
     this.theatreService.setCurrentTheatre(t);
     this.addressService.getAllAddresses()
     .subscribe((addresses:Address[]) => {
-      if(addresses){
+      // if(addresses){
         this.addressService.updateAllAddressesList(addresses);
-        alert(`Addresses fetched Successfully!`);
+        // alert(`Addresses fetched Successfully!`);
         this.router.navigate(['/servicesList/editTheatre']);
-      }
-      else{
-        alert(`Addresses NOT fetched Successfully!`);
-      }
+      // }
+      // else{
+      //   alert(`Addresses NOT fetched Successfully!`);
+      // }
     });
   }
   deleteTheatre(t:Theatre){

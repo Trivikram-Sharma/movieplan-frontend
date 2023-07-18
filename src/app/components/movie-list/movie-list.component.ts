@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Admin } from 'src/interfaces/admin';
 import { Movie } from 'src/interfaces/movie';
 import { GenreService } from 'src/services/genre/genre.service';
@@ -15,19 +15,31 @@ import { User } from 'src/interfaces/user';
 })
 export class MovieListComponent implements OnInit {
 
+  movieList:Movie[] = [];
   constructor(private loginService:LoginService, 
     private router: Router,
     private movieService: MovieService,
-    private genreService: GenreService) { }
+    private genreService: GenreService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     // this.movieService.getEnabledMovies().subscribe((data:Movie[]) => this.movieList = data );
+    this.activatedRoute.data.forEach(
+      data => {
+        if(this.loginService.adminLoggedIn){
+          this.movieList = data['movieObservable'];
+        }
+        else if(this.loginService.userLoggedIn){
+          this.movieList = data['movieObservable'].filter((m:Movie) => m.status === 'enabled');
+        }
+      }
+    );
   }
 
   loggedin:boolean = this.loginService.loggedin;
   adminLoggedIn:boolean = this.loginService.currentAdmin;
   userLoggedIn:User = this.loginService.currentUser;
-  movieList:Movie[] = this.movieService.getMovieList();
+  // movieList:Movie[] = this.movieService.getMovieList();
   movieForm = new FormGroup({})
   // getMovieList(){
   //   this.movieService.getEnabledMovies()

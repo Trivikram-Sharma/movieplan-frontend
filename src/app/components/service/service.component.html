@@ -2,13 +2,14 @@
     <div class="sidebar">
         <ul>
            <li><a routerLink="/servicesList/ticketList"> Tickets</a></li> 
-           <li><a routerLink="/servicesList/movieList" (click)="setMovies()">Movies</a></li> 
+           <li><a routerLink="/servicesList/movieList">Movies</a></li> 
            <li><a routerLink="/servicesList/searchList">Search History</a></li> 
            <li><a routerLink="/servicesList/purchaseHistory">Purchase History</a></li>
            <li *ngIf="adminLoggedin"><a routerLink="/servicesList/genreList">Genre List</a></li> 
-           <li *ngIf="adminLoggedin"><a routerLink="/servicesList/addressList" (click)="setAddressesList()">Addresses</a></li>
-           <li *ngIf="adminLoggedin"><a routerLink="/servicesList/showTimeList" (click)="setShowTimeList()">ShowTimes</a></li>
-           <li *ngIf="adminLoggedin"><a routerLink="/servicesList/theatreList" (click)="setTheatreList()">Theatres</a></li>
+           <li *ngIf="adminLoggedin"><a routerLink="/servicesList/addressList">Addresses</a></li>
+           <li *ngIf="adminLoggedin"><a routerLink="/servicesList/showTimeList">ShowTimes</a></li>
+           <li *ngIf="adminLoggedin"><a routerLink="/servicesList/theatreList">Theatres</a></li>
+           <li *ngIf="adminLoggedin"><a routerLink="/servicesList/screeningList">Screenings</a></li>
         </ul>
     </div>
 

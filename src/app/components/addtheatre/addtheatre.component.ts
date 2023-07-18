@@ -26,7 +26,12 @@ export class AddtheatreComponent implements OnInit {
       name: new FormControl('',Validators.required),
       screens: new FormControl(0,Validators.required),
       address: new FormGroup({
-        country: new FormControl('')
+        country: new FormControl(''),
+        state: new FormControl(''),
+        city: new FormControl(''),
+        area: new FormControl(''),
+        street: new FormControl(''),
+        building: new FormControl('')
       })
     }
   );
@@ -56,6 +61,7 @@ export class AddtheatreComponent implements OnInit {
     return this.addTheatreForm.contains('building')
   }
 
+  filteredAddresses:Address[] = [];
 
 
   spinUpBuildings(){

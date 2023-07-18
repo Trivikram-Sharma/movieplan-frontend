@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from 'src/interfaces/address';
 import { Admin } from 'src/interfaces/admin';
 import { AddressService } from 'src/services/address/address.service';
@@ -12,12 +12,16 @@ import { LoginService } from 'src/services/login/login.service';
 })
 export class AddresslistComponent implements OnInit {
 
+  addressList:Address[] = [];
   constructor(private loginService:LoginService,
     private addressService:AddressService,
-    private router:Router) { }
-  addressList:Address[] = [];
+    private router:Router,
+    private activatedRoute: ActivatedRoute) { }
   ngOnInit(): void {
-    this.addressList = this.addressService.getAllAddressesList();
+    // this.addressList = this.addressService.getAllAddressesList();
+    this.activatedRoute.data.forEach(
+      data => this.addressList = data['addresses']
+    );
     console.log('this.addressService.allAddressesList ->',this.addressList);
   }
   adminLoggedIn:Admin = this.loginService.currentAdmin;

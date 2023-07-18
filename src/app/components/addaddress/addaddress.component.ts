@@ -36,6 +36,12 @@ export class AddaddressComponent implements OnInit {
       country: <string>this.addAddressForm.get('country')?.value,
       pincode: <string>this.addAddressForm.get('pincode')?.value
     };
+    if(a.building.includes("/")){
+      alert(`Please DO NOT include or use '/' in the building/door Number.`);
+    }
+    else{
+
+    
     this.addressService.addAddress(a)
     .subscribe(
       (data:boolean) => {
@@ -49,5 +55,6 @@ export class AddaddressComponent implements OnInit {
         }
       }
     );
+  }
   }
 }

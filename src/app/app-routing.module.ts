@@ -22,7 +22,22 @@ import { AddaddressComponent } from './components/addaddress/addaddress.componen
 import { TheatrelistComponent } from './components/theatrelist/theatrelist.component';
 import { AddtheatreComponent } from './components/addtheatre/addtheatre.component';
 import { EdittheatreComponent } from './components/edittheatre/edittheatre.component';
-
+import { MovieResolveGuard } from './guards/movieResolve/movie-resolve.guard';
+import { MovieService } from 'src/services/movie/movie.service';
+import { ShowtimeResolveGuard } from './guards/showtimeResolve/showtime-resolve.guard';
+import { ShowtimeService } from 'src/services/showtime/showtime.service';
+import { GenreResolverGuard } from './guards/genreResolver/genre-resolver.guard';
+import { GenreService } from 'src/services/genre/genre.service';
+import { AddressResolverGuard } from './guards/addressResolver/address-resolver.guard';
+import { AddressService } from 'src/services/address/address.service';
+import { TheatreResolverGuard } from './guards/theatreResolver/theatre-resolver.guard';
+import { TheatreService } from 'src/services/theatre/theatre.service';
+import { ScreeningService } from 'src/services/screening/screening.service';
+import { ScreeninglistComponent } from './components/screeninglist/screeninglist.component';
+import { EditscreeningComponent } from './components/editscreening/editscreening.component';
+import { AddScreeningComponent } from './components/add-screening/add-screening.component';
+import { AddScreeningResolveGuard } from './guards/addScreeningResolve/add-screening-resolve.guard';
+import { ScreeningListResolveGuard } from './guards/screeningListResolve/screening-list-resolve.guard';
 const routes: Routes = [
   {path:"", redirectTo:"home",pathMatch:"full"},
   {path:"home", component:HomeComponent},
@@ -33,25 +48,68 @@ const routes: Routes = [
   {path:"servicesList", component: ServiceComponent,
   children:[
     {path:"ticketList",component:TicketListComponent},
-    {path:"movieList",component:MovieListComponent},
+    {path:"movieList",
+      component:MovieListComponent,
+      resolve: {
+        movieObservable: MovieResolveGuard
+      }},
     {path:"purchaseHistory",component:PurchaseListComponent},
     {path:"searchList", component:SearchListComponent},
-    {path:"genreList", component:GenrelistComponent},
+    {path:"genreList",
+      component:GenrelistComponent,
+      resolve: {
+        genrelist: GenreResolverGuard
+      }},
     {path:"addMovie", component:AddmovieComponent},
     {path:"addGenre",component:AddgenreComponent},
     {path:"editMovie", component:EditmovieComponent},
-    {path:"showTimeList",component:ShowtimelistComponent},
+    {path:"showTimeList",
+      component:ShowtimelistComponent,
+      resolve: {
+        data: ShowtimeResolveGuard
+      }
+     },
     {path:"addShowTime",component:AddshowtimeComponent},
-    {path:"addressList",component:AddresslistComponent},
+    {path:"addressList",
+      component:AddresslistComponent,
+        resolve: {
+          addresses: AddressResolverGuard
+      }},
     {path:"editAddress",component:EditaddressComponent},
     {path: "addAddress", component: AddaddressComponent},
-    {path:"theatreList",component: TheatrelistComponent},
+    {path:"theatreList",
+      component: TheatrelistComponent,
+      resolve: {
+        data: TheatreResolverGuard
+      }},
     {path: "addTheatre",component: AddtheatreComponent},
-    {path: "editTheatre",component: EdittheatreComponent}
+    {path: "editTheatre",component: EdittheatreComponent},
+    {path: "screeningList",
+      component: ScreeninglistComponent,
+      resolve:{
+        screeninglist: ScreeningListResolveGuard
+      }
+      },
+    {path: "addScreening",
+      component: AddScreeningComponent,
+      resolve: {
+        data: AddScreeningResolveGuard
+      }},
+    {path: "editScreening",
+      component: EditscreeningComponent,
+      resolve: {
+        data: AddScreeningResolveGuard
+      }}
   ]},
 ];
 
 @NgModule({
+  providers: [MovieResolveGuard, MovieService,
+     ShowtimeResolveGuard, ShowtimeService,
+    GenreResolverGuard, GenreService,
+  AddressResolverGuard,AddressService,
+TheatreResolverGuard, TheatreService,
+AddScreeningResolveGuard,ScreeningService],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

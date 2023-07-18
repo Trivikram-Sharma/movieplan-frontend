@@ -18,26 +18,32 @@
             <input type="number" min="0" max="15" formControlName="screens">
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" id="address-editing">
         <div class="form-label">Address</div>
-        <fieldset id="address-editing" formGroupName="address">
-            <select formControlName="country">
-                <option *ngFor="let a of allAddressesList">{{a.country}}</option>
+        <fieldset formGroupName="address">
+            Country:
+            <select formControlName="country" (change)="spinUpStates()">
+                <option value="{{a.country}}" *ngFor="let a of allAddressesList">{{a.country}}</option>
             </select>
-            <select formControlName="state">
-                <option *ngFor="let a of stateList">{{a.state}}</option>
+            State:
+            <select formControlName="state" (change)="spinUpCities()" >
+                <option value="{{a.state}}" *ngFor="let a of stateListFiltered">{{a.state}}</option>
             </select>
-            <select formControlName="city">
-                <option *ngFor="let a of cityList">{{a.city}}</option>
+            City:
+            <select formControlName="city" (change)="spinUpAreas()">
+                <option value="{{a.city}}" *ngFor="let a of cityListFiltered">{{a.city}}</option>
             </select>
-            <select formControlName="area">
-                <option *ngFor="let a of areaList">{{a.area}}</option>
+            Area:
+            <select formControlName="area" (change)="spinUpStreets()">
+                <option value="{{a.area}}" *ngFor="let a of areaListFiltered">{{a.area}}</option>
             </select>
-            <select formControlName="street">
-                <option *ngFor="let a of streetList">{{a.street}}</option>
+            Street:
+            <select formControlName="street" (change)="spinUpBuildings()">
+                <option value="{{a.street}}" *ngFor="let a of streetListFiltered">{{a.street}}</option>
             </select>
+            Building:
             <select formControlName="building">
-                <option *ngFor="let a of buildingList">{{a.building}}</option>
+                <option value="{{a.building}}" *ngFor="let a of buildingListFiltered">{{a.building}}</option>
             </select>
         </fieldset>
     </div>

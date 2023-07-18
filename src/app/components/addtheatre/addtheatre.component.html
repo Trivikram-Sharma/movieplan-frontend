@@ -15,22 +15,28 @@
     <div class="form-group" id="address-selection">
         <div class="form-label">Address</div><br>
         <fieldset formGroupName="address">
+            Country:
             <select (change)="spinUpStates()" formControlName="country">
                 <option value="{{a.country}}" *ngFor="let a of allAddressesList">{{a.country}}</option>
             </select>
-            <select (change)="spinUpCities()" *ngIf="containsState" formControlName="state">
+            State:
+            <select (change)="spinUpCities()" formControlName="state">
                 <option value="{{a.state}}" *ngFor="let a of stateListFiltered">{{a.state}}</option>
             </select>
-            <select (change)="spinUpAreas()" *ngIf="containsCity" formControlName="city">
+            City:
+            <select (change)="spinUpAreas()" formControlName="city">
                 <option value="{{a.city}}" *ngFor="let a of cityListFiltered">{{a.city}}</option>
             </select>
-            <select (change)="spinUpStreets()" *ngIf="containsArea" formControlName="area">
+            Area:
+            <select (change)="spinUpStreets()" formControlName="area">
                 <option value="{{a.area}}" *ngFor="let a of areaListFiltered">{{a.area}}</option>
             </select>
-            <select (change)="spinUpBuildings()" *ngIf="containsStreet" formControlName="street">
+            Street:
+            <select (change)="spinUpBuildings()" formControlName="street">
                 <option value="{{a.street}}" *ngFor="let a of streetListFiltered">{{a.street}}</option>
             </select>
-            <select *ngIf="containsBuilding" formControlName="building">
+            Building/ Door No:
+            <select formControlName="building">
                 <option value="{{a.building}}" *ngFor="let a of buildingListFiltered">{{a.building}}</option>
             </select>
         </fieldset>

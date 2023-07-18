@@ -1,7 +1,6 @@
 
 <div *ngIf="adminLoggedIn">
 <span (click)="redirectToAddMovie()">Add Movie</span>
-<a routerLink="/servicesList/editMovie">Edit Movie</a>
 </div>
 <!-- <div class="movie-container" *ngIf="loggedin">
     <form [formGroup]="movieForm">
@@ -50,11 +49,11 @@
         </pre> -->
         <figure>
             
-            <img src="src/assets/movies/{{m.filename}}" alt="{{m.title}}" />
-            <caption>
-                <button>Book Ticket</button><br>
+            <img src="assets/movies/{{m.fileName}}" alt="{{m.title}}" width="250px" height="300px" />
+            <figcaption>
+                <button *ngIf="m.status === 'enabled'">Book Ticket</button><br>
                 <!-- <button *ngIf="adminLoggedIn" (click)="toggleMovieEdit(m)">Edit Movie</button> -->
-            </caption>
+            </figcaption>
         </figure>
     </div>
     
@@ -63,12 +62,12 @@
 <div class="movie-container" *ngIf="adminLoggedIn && movieList.length!==0">
     <div class="movie-card" *ngFor="let m of movieList">
         <figure>  
-            <img src="src/assets/movies/{{m.filename}}" alt="{{m.title}}" />
-            <caption>
-                <button>Book Ticket</button><br>
+            <img src="assets/movies/{{m.fileName}}" alt="{{m.title}}" width="250px" height="300px" />
+            <figcaption>
+                <button *ngIf="m.status === 'enabled'">Book Ticket</button><br>
                 <button *ngIf="adminLoggedIn" (click)="toggleMovieEdit(m)">Edit Movie</button>
                 <button *ngIf="adminLoggedIn" (click)="deleteMovie(m)">Delete Movie</button>
-            </caption>
+            </figcaption>
         </figure>
     </div>
 </div>

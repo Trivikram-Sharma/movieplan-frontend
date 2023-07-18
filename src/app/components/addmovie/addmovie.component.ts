@@ -74,7 +74,7 @@ export class AddmovieComponent implements OnInit {
       description: <string>description,
       releaseDate: new Date(<string>releaseDate),
       status: <string>this.addMovieForm.get('status')?.value,
-      filename: <string>this.addMovieForm.get('movieposter')?.value,
+      fileName: <string>this.addMovieForm.get('movieposter')?.value,
       genres: this.genrelist,
       screenings: []
     };

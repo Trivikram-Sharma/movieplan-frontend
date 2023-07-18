@@ -1,0 +1,14 @@
+table {
+    border: 5px solid crimson;
+}
+td {
+    border: 2px solid crimson;
+}
+a#edit-theatre{
+    background-color: yellow;
+    color: darkblue;
+}
+a#delete-theatre {
+    background-color: red;
+    color: white;
+}

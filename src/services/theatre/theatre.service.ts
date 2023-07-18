@@ -68,11 +68,11 @@ export class TheatreService {
 
   //UPDATE METHODS
   updateTheatreName(name:string,theatre:Theatre){
-    return this.httpClient.patch<boolean>(theatreapi.updateTheatreName+`/${theatre.id}&name=${name}`,name);
+    return this.httpClient.patch<boolean>(theatreapi.updateTheatreName+`/${theatre.id}?name=${name}`,name);
   }
 
   updateTheatreScreens(screens:string,theatre:Theatre){
-    return this.httpClient.patch<boolean>(theatreapi.updateTheatreScreens+`/${theatre.id}&screen=${screens}`,screens);
+    return this.httpClient.patch<boolean>(theatreapi.updateTheatreScreens+`/${theatre.id}?screen=${screens}`,screens);
   }
 
   updateTheatreAddress(address:Address,theatre:Theatre){

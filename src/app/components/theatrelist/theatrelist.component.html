@@ -16,9 +16,9 @@
            <td>{{t.name}}</td>
            <td>{{t.screens}}</td>
            <td>{{addressString(t.address)}}</td>
-           <td>{{screeningGroups(t.screenings)}}</td>
-           <td><a href="#" (click)="editTheatre(t)">Edit</a></td>
-           <td><a href="#" (click)="deleteTheatre(t)">Delete</a></td>
+           <td>{{screeningGroups(t)}}</td>
+           <td><a id="edit-theatre" (click)="editTheatre(t)">Edit</a></td>
+           <td><a id="delete-theatre" (click)="deleteTheatre(t)">Delete</a></td>
         </tr>
     </table>
 </div>

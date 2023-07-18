@@ -27,7 +27,7 @@ export class EditmovieComponent implements OnInit {
     title: new FormControl(this.currentMovie.title),
     price: new FormControl(this.currentMovie.price),
     language: new FormControl(this.currentMovie.language),
-    movieposter: new FormControl({value: this.currentMovie.filename, disabled:true}),
+    movieposter: new FormControl({value: this.currentMovie.fileName, disabled:true}),
     description: new FormControl(this.currentMovie.description),
     releaseDate: new FormControl({value:this.currentMovie.releaseDate,disabled: true}),
     status: new FormControl(this.currentMovie.status),
@@ -45,6 +45,7 @@ export class EditmovieComponent implements OnInit {
   addGenre(){
     console.log('addGenre() invoked!');
     (<FormArray>this.editMovieForm.get('genres')).push(new FormControl('Action'));
+    console.log('editGenreControls->',this.editMovieForm.get('genres'));
   }
   get editGenreControls(){
     return (<FormArray>this.editMovieForm.get('genres'))?.controls;
@@ -182,6 +183,7 @@ export class EditmovieComponent implements OnInit {
   //       return;
 
     // let newgenres:Genre[] = [];
+    console.log(this.editMovieForm);
     let movieObject:Movie = {
               id: this.movieService.currentMovie.id,
               title: <string>this.editMovieForm.get('title')?.value,
@@ -191,7 +193,7 @@ export class EditmovieComponent implements OnInit {
               releaseDate:<Date>this.editMovieForm.get('releaseDate')?.value,
               status: <string>this.editMovieForm.get('status')?.value,
               genres: [],
-              filename: this.movieService.currentMovie.filename,
+              fileName: this.movieService.currentMovie.fileName,
               screenings: this.movieService.currentMovie.screenings
             };
       this.movieService.updateMovieTitle(<string>movieObject.title,<string>movieObject.id)

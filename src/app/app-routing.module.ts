@@ -60,7 +60,11 @@ const routes: Routes = [
       resolve: {
         genrelist: GenreResolverGuard
       }},
-    {path:"addMovie", component:AddmovieComponent},
+    {path:"addMovie",
+     component:AddmovieComponent,
+      resolve: {
+        allgenres: GenreResolverGuard
+      }},
     {path:"addGenre",component:AddgenreComponent},
     {path:"editMovie", component:EditmovieComponent},
     {path:"showTimeList",

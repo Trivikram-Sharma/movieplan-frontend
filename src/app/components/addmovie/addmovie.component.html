@@ -49,7 +49,7 @@
         <label>Genres | </label> <span (click)="addGenre()" id="AddGenreButton"> + </span> <br />
         <div class="form-control-genre" *ngFor="let g of genreControls;let i = index">
             <select [formControlName]="i">
-                <option *ngFor="let genre of allGenres()" [value]="genre.name">{{genre.name}}</option>
+                <option *ngFor="let genre of allGenreList" [value]="genre.name">{{genre.name}}</option>
                 <!-- <option>Action</option>
                 <option>Comedy</option>
                 <option>Thriller</option>

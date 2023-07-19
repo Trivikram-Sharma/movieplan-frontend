@@ -5,7 +5,7 @@ import { Genre } from 'src/interfaces/genre';
 import { MovieService } from 'src/services/movie/movie.service';
 import { Movie } from 'src/interfaces/movie';
 import { Screening } from 'src/interfaces/screening';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { Observable } from 'rxjs';
 @Component({
@@ -14,14 +14,20 @@ import { Observable } from 'rxjs';
   styleUrls: ['./addmovie.component.css']
 })
 export class AddmovieComponent implements OnInit {
-
+  allGenreList: Genre[] = [];
   constructor(private genreService: GenreService,
      private movieService: MovieService,
-     private router: Router) { }
+     private router: Router,
+     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.data.forEach(
+      data => {
+        this.allGenreList = data['allgenres'];
+      }
+    );
   }
-  allGenreList = this.allGenres();
+  // allGenreList = this.allGenres();
   addMovieForm = new FormGroup({
     id : new FormControl({value:'', disabled: true}),
     title: new FormControl(''),
@@ -30,8 +36,8 @@ export class AddmovieComponent implements OnInit {
     movieposter: new FormControl(''),
     description: new FormControl(''),
     releaseDate: new FormControl(''),
-    status: new FormControl('Action'),
-    genres: new FormArray([new FormControl('')])
+    status: new FormControl('enabled'),
+    genres: new FormArray([new FormControl('Action')])
   });
 
   message:any;
@@ -122,16 +128,24 @@ export class AddmovieComponent implements OnInit {
       // );
       let glist:string[] = <string[]>this.addMovieForm.get('genres')?.value;
       glist.map(g => {
-        this.genreService.getGenreByName(g)
-        .subscribe(
-          (data:Genre[]) => {
-            this.genrelist.push(data[0]);
-              if(this.genrelist.length === glist.length){
-                this.addMovie(title,language,description,releaseDate);
-              }
-          }
-        )
+        // this.genreService.getGenreByName(g)
+        // .subscribe(
+        //   (data:Genre[]) => {
+        //     this.genrelist.push(data[0]);
+        //       if(this.genrelist.length === glist.length){
+        //         console.log('glist ->',glist);
+        //         console.log('this.genrelist -> ',this.genrelist);
+        //         this.addMovie(title,language,description,releaseDate);
+        //       }
+        //   }
+        // )
+        this.genrelist.push(this.allGenreList.filter(gn => gn.name == g)[0]);
       });
+      if(glist.length === this.genrelist.length){
+         console.log('glist ->',glist);
+        console.log('this.genrelist -> ',this.genrelist);
+        this.addMovie(title,language,description,releaseDate);
+      }
 
       // for(let g of this.addMovieForm.get('genres')?.value){
 

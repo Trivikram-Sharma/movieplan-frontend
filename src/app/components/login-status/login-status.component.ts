@@ -35,21 +35,26 @@ export class LoginStatusComponent implements OnInit {
   logout() {
     if(this.currentUser==null && this.currentAdmin!=null) {
       this.loginService.adminLogout(this.currentAdmin)
-      .subscribe((data:any) => this.message = data);
-      this.loginService.currentAdmin = null;
-      this.loginService.updateAdminLoggedIn(false);
-      this.loginService.updateLoggedIn(false);
+      .subscribe((data:any) => {
+        this.message = data;
+        if(this.message !=null){
+          this.loginService.currentAdmin = null;
+          this.loginService.updateAdminLoggedIn(false);
+          this.loginService.updateLoggedIn(false);
+        }
+      }
+      );
     }
     else if(this.currentUser!=null && this.currentAdmin==null) {
       this.loginService.userLogout(this.currentUser)
-      .subscribe((data:any) => {//this.message = data;
-            console.log(data);
+      .subscribe((data:any) => {
+        this.message = data;
+        if(this.message){
+        this.loginService.currentUser = null;
+        this.loginService.updateUserLoggedIn(false);
+        this.loginService.updateLoggedIn(false);
+      }
       });
-      if(this.message){
-      this.loginService.currentUser = null;
-      this.loginService.updateUserLoggedIn(false);
-      this.loginService.updateLoggedIn(false);
-    }
     }
   }
 

@@ -1,0 +1,42 @@
+<div *ngIf="userLoggedIn">
+    <div class="cart-items"> 
+        <div>
+            <div>Movie</div>
+            <div>Theatre</div>
+            <div>Showtime</div>
+            <div>Date</div>
+            <div>Price</div>
+            <div>Edit/Remove</div>
+        </div>
+        <div *ngFor="let ct of currentTickets" class="cart-item">
+            <div class="cart-column">
+                {{ct.screening.movie.title}} ({{ct.screening.movie.language}})
+            </div>
+            <div class="cart-column">
+                {{ct.screening.theatre.name}}, {{ct.screening.theatre.address.area}}, {{ct.screening.theatre.address.city}}
+            </div>
+            <div class="cart-column">
+                {{ct.screening.showTime.showName}} ({{ct.screening.showTime.startTime}} to {{ct.screening.showTime.endTime}})
+            </div>
+            <div class="cart-column">
+                {{ct.screening.date}}
+            </div>
+            <div class="cart-column">
+                {{ct.screening.movie.price}}
+            </div>
+            <div>
+                <span (click)="editTicket(ct)">Edit</span>
+                <span (click)="removeTicket(ct)"> Remove </span>
+            </div>
+        </div>
+        
+    </div>
+    <div>
+        Want to book more tickets? Click on <strong>'Book More Tickets'</strong> below. <br />
+        Want to confirm/Buy the above tickets? Click <strong>'Checkout'</strong> below to proceed for Payment.
+    </div>
+    <div>
+        <button (click)="bookMoreTickets()">Book More Tickets</button>
+        <button (click)="checkOut()">Checkout</button>
+    </div>
+</div>

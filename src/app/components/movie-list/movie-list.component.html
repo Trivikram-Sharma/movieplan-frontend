@@ -51,7 +51,7 @@
             
             <img src="assets/movies/{{m.fileName}}" alt="{{m.title}}" width="250px" height="300px" />
             <figcaption>
-                <button *ngIf="m.status === 'enabled'">Book Ticket</button><br>
+                <button *ngIf="m.status === 'enabled'" (click)="bookTicket(m)">Book Ticket</button><br>
                 <!-- <button *ngIf="adminLoggedIn" (click)="toggleMovieEdit(m)">Edit Movie</button> -->
             </figcaption>
         </figure>
@@ -64,7 +64,7 @@
         <figure>  
             <img src="assets/movies/{{m.fileName}}" alt="{{m.title}}" width="250px" height="300px" />
             <figcaption>
-                <button *ngIf="m.status === 'enabled'">Book Ticket</button><br>
+                <button *ngIf="m.status === 'enabled'" (click)="bookTicket(m)">Book Ticket</button><br>
                 <button *ngIf="adminLoggedIn" (click)="toggleMovieEdit(m)">Edit Movie</button>
                 <button *ngIf="adminLoggedIn" (click)="deleteMovie(m)">Delete Movie</button>
             </figcaption>

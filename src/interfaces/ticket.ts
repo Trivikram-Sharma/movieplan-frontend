@@ -1,10 +1,11 @@
 import { Movie } from "./movie";
 import { Payment } from "./payment";
 import { User } from "./user";
+import { Screening } from "./screening";
 
 export interface Ticket {
-    id:Number;
+    id?:Number;
     user:User;
-    movie:Movie;
-    payment:Payment;
+    screening:Screening;
+    payment?:Payment;
 }

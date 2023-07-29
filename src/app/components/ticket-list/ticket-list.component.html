@@ -9,7 +9,7 @@
     <tr *ngFor="let t of ticketList">
         <td><a href="#" target="_blank" (click)="showTicket(t.id)">{{t.id}}</a></td>
         <td><a href="#">{{t.user}}</a></td>
-        <td><a href="#">{{t.movie}}</a></td>
-        <td><a href="#">{{t.movie.price}}</a></td>
+        <td><a href="#">{{t.screening.movie.title}}</a></td>
+        <td><a href="#">{{t.screening.movie.price}}</a></td>
     </tr>
 </table>

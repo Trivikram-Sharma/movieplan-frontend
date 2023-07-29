@@ -43,6 +43,10 @@ import { ScreeningService } from 'src/services/screening/screening.service';
 import { ScreeninglistComponent } from './components/screeninglist/screeninglist.component';
 import { EditscreeningComponent } from './components/editscreening/editscreening.component';
 import { AddScreeningComponent } from './components/add-screening/add-screening.component';
+import { AddticketComponent } from './components/addticket/addticket.component';
+import { CartComponent } from './components/cart/cart.component';
+import { EditticketComponent } from './components/editticket/editticket.component';
+import { CartService } from 'src/services/cart/cart.service';
 
 @NgModule({
   declarations: [
@@ -74,7 +78,10 @@ import { AddScreeningComponent } from './components/add-screening/add-screening.
     EdittheatreComponent,
     ScreeninglistComponent,
     EditscreeningComponent,
-    AddScreeningComponent
+    AddScreeningComponent,
+    AddticketComponent,
+    CartComponent,
+    EditticketComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +92,8 @@ import { AddScreeningComponent } from './components/add-screening/add-screening.
   ],
   providers: [LoginService,RegistrationService, TicketService,
      MovieService, GenreService, ToastService,
-    ShowtimeService,AddressService, TheatreService, ScreeningService],
+    ShowtimeService,AddressService, TheatreService, ScreeningService,
+  CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

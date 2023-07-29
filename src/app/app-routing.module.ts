@@ -38,6 +38,13 @@ import { EditscreeningComponent } from './components/editscreening/editscreening
 import { AddScreeningComponent } from './components/add-screening/add-screening.component';
 import { AddScreeningResolveGuard } from './guards/addScreeningResolve/add-screening-resolve.guard';
 import { ScreeningListResolveGuard } from './guards/screeningListResolve/screening-list-resolve.guard';
+import { AddticketComponent } from './components/addticket/addticket.component';
+import { AddTicketResolverGuard } from './guards/addTicketResolver/add-ticket-resolver.guard';
+import { CartService } from 'src/services/cart/cart.service';
+import { CartComponent } from './components/cart/cart.component';
+import { CartResolverGuard } from './guards/cartResolver/cart-resolver.guard';
+import { EditticketComponent } from './components/editticket/editticket.component';
+import { EditTicketResolverGuard } from './guards/editTicketResolver/edit-ticket-resolver.guard';
 const routes: Routes = [
   {path:"", redirectTo:"home",pathMatch:"full"},
   {path:"home", component:HomeComponent},
@@ -103,7 +110,28 @@ const routes: Routes = [
       component: EditscreeningComponent,
       resolve: {
         data: AddScreeningResolveGuard
-      }}
+      }},
+      {
+        path: "addTicket",
+        component: AddticketComponent,
+        resolve: {
+          data: AddTicketResolverGuard
+        }
+      },
+      {
+        path: "editTicket",
+        component: EditticketComponent,
+        resolve: {
+          data: EditTicketResolverGuard
+        }
+      },
+      {
+        path: "cart",
+        component: CartComponent,
+        resolve: {
+          data: CartResolverGuard
+        }
+      }
   ]},
 ];
 
@@ -113,7 +141,9 @@ const routes: Routes = [
     GenreResolverGuard, GenreService,
   AddressResolverGuard,AddressService,
 TheatreResolverGuard, TheatreService,
-AddScreeningResolveGuard,ScreeningService],
+AddScreeningResolveGuard,ScreeningService,
+AddTicketResolverGuard,CartService,
+CartResolverGuard, EditTicketResolverGuard],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

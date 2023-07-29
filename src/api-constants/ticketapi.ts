@@ -9,13 +9,15 @@ export default class ticketapi{
     
     public static ticketById = this.prefix + this.ticketprefix + "/get/id";
 
+    public static allTickets = this.prefix + this.ticketprefix + "/get/all";
+
     public static ticketByMovie = this.prefix + this.ticketprefix + "/get/movietitle";
 
     public static ticketByPaymentId = this.prefix + this.ticketprefix + "/get/paymentid";
 
     public static updateTicketUser = this.prefix + this.ticketprefix + "/update/user";
     
-    public static updateTicketMovie = this.prefix + this.ticketprefix + "/update/movie";
+    public static updateTicketScreening = this.prefix + this.ticketprefix + "/update/screening";
 
     public static deleteTicket = this.prefix + this.ticketprefix + "/delete";
 

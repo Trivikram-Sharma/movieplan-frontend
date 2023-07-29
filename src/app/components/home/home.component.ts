@@ -56,13 +56,15 @@ export class HomeComponent implements OnInit {
           status:"inactive"
         };
         this.loginService.userLogin(user).subscribe(
-          (data) => this.currentUser = data);
-        if(this.currentUser!=null) {
-          this.loginService.updateUserLoggedIn(true);
-          this.loginService.updateCurrentUser(this.currentUser);
-          this.loginService.updateLoggedIn(true);
-          this.loggedin = this.loginService.getLoggedIn();
-        }
+          (data) => {
+            this.currentUser = data
+            if(this.currentUser!=null) {
+              this.loginService.updateUserLoggedIn(true);
+              this.loginService.updateCurrentUser(this.currentUser);
+              this.loginService.updateLoggedIn(true);
+              this.loggedin = this.loginService.getLoggedIn();
+            }
+          });
       }
       else if(this.adminrole?.value=="Yes") {
         let adminuser:Admin = {
@@ -75,17 +77,20 @@ export class HomeComponent implements OnInit {
             this.currentAdmin = { adminUserName : data.adminUserName,
                                   adminPassword : data.adminPassword,
                                   status : data.status};
-            //console.log(data);
-          });
+                          if(this.currentAdmin!=null) {
+                            this.loginService.updateAdminLoggedIn(true);
+                            this.loginService.updateCurrentAdmin(this.currentAdmin);
+                            this.loginService.updateLoggedIn(true);
+                            this.loggedin = this.loginService.getLoggedIn();
+                            //console.log('this.loggedin ->',this.loggedin);
+                          }
+
+
+                      //console.log(data);
+                    });
         // console.log('Current Admin ->',this.currentAdmin);
         // console.log('tempArray->',this.tempArray);
-        if(this.currentAdmin!=null) {
-          this.loginService.updateAdminLoggedIn(true);
-          this.loginService.updateCurrentAdmin(this.currentAdmin);
-          this.loginService.updateLoggedIn(true);
-          this.loggedin = this.loginService.getLoggedIn();
-          //console.log('this.loggedin ->',this.loggedin);
-        }
+        
       }
       else {
         alert("Something went wrong")

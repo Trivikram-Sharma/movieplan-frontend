@@ -91,4 +91,11 @@ export class MovieListComponent implements OnInit {
       }
     );
   }
+
+
+
+  bookTicket(m:Movie){
+    this.movieService.setCurrentMovie(m);
+    this.router.navigate(['/servicesList/addTicket']);
+  }
 }

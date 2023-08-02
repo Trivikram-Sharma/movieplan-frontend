@@ -19,14 +19,16 @@ export class CartComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.activatedRoute.data.forEach(
-      data => {
-        this.currentTickets = data['data']['currentTickets']
-      }
-    );
+    // this.activatedRoute.data.forEach(
+    //   data => {
+    //     this.currentTickets = data['data']['currentTickets']
+    //   }
+    // );
+    this.currentTickets = this.cartService.getCurrentTickets();
   }
   userLoggedIn:boolean = this.loginService.userLoggedIn;
   currentUser:User = this.loginService.currentUser;
+  loggedin:boolean = this.loginService.loggedin;
   editTicket(ct:Ticket){
     this.router.navigate(['/servicesList/editTicket']);
   }
@@ -39,6 +41,6 @@ export class CartComponent implements OnInit {
     this.router.navigate(['/servicesList/movieList']);
   }
   checkOut(){
-    
+    this.router.navigate(['/servicesList/payment']);
   }
 }

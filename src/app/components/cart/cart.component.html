@@ -1,42 +1,52 @@
 <div *ngIf="userLoggedIn">
-    <div class="cart-items"> 
-        <div>
-            <div>Movie</div>
-            <div>Theatre</div>
-            <div>Showtime</div>
-            <div>Date</div>
-            <div>Price</div>
-            <div>Edit/Remove</div>
-        </div>
-        <div *ngFor="let ct of currentTickets" class="cart-item">
-            <div class="cart-column">
+    <table class="cart-items"> 
+        <tr>
+            <th>Movie</th>
+            <th>Theatre</th>
+            <th>Showtime</th>
+            <th>Date</th>
+            <th>Price</th>
+            <th>Edit/Remove</th>
+        </tr>
+        <tr *ngFor="let ct of currentTickets" class="cart-item">
+            <td class="cart-column">
                 {{ct.screening.movie.title}} ({{ct.screening.movie.language}})
-            </div>
-            <div class="cart-column">
+            </td>
+            <td class="cart-column">
                 {{ct.screening.theatre.name}}, {{ct.screening.theatre.address.area}}, {{ct.screening.theatre.address.city}}
-            </div>
-            <div class="cart-column">
+            </td>
+            <td class="cart-column">
                 {{ct.screening.showTime.showName}} ({{ct.screening.showTime.startTime}} to {{ct.screening.showTime.endTime}})
-            </div>
-            <div class="cart-column">
+            </td>
+            <td class="cart-column">
                 {{ct.screening.date}}
-            </div>
-            <div class="cart-column">
+            </td>
+            <td class="cart-column">
                 {{ct.screening.movie.price}}
-            </div>
-            <div>
+            </td>
+            <td>
                 <span (click)="editTicket(ct)">Edit</span>
                 <span (click)="removeTicket(ct)"> Remove </span>
-            </div>
-        </div>
+            </td>
+        </tr>
         
-    </div>
+    </table>
+    <hr />
     <div>
         Want to book more tickets? Click on <strong>'Book More Tickets'</strong> below. <br />
+        <hr />
         Want to confirm/Buy the above tickets? Click <strong>'Checkout'</strong> below to proceed for Payment.
     </div>
+    <hr />
     <div>
         <button (click)="bookMoreTickets()">Book More Tickets</button>
         <button (click)="checkOut()">Checkout</button>
     </div>
+</div>
+
+<div *ngIf="loggedin && currentTickets.length == 0">
+    Cart is Empty. Click <a routerLink="/servicesList/movieList">Here</a> to book movie tickets and add to cart.
+</div>
+<div *ngIf="!loggedin">
+    Please Login and book tickets to add to cart.
 </div>

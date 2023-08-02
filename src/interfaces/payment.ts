@@ -5,4 +5,5 @@ export interface Payment {
     id?: Number;
     user: User;
     tickets: Ticket[];
+    amount: Number;
 }

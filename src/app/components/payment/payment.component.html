@@ -1,0 +1,27 @@
+<p>payment works!</p>
+<div *ngIf="userLoggedIn">
+    <table>
+        <tr>
+            <th>Movie</th>
+            <th>Theatre</th>
+            <th>Showtime</th>
+            <th>Date</th>
+            <th>Price</th>
+        </tr>
+        <tr *ngFor="let t of currentTickets">
+            <td>{{t.screening.movie.title}} ({{t.screening.movie.language}})</td>
+            <td>{{t.screening.theatre.name}}, {{t.screening.theatre.address.area}}, {{t.screening.theatre.address.city}}</td>
+            <td>{{t.screening.showTime.showName}} ({{t.screening.showTime.startTime}} to {{t.screening.showTime.endTime}})</td>
+            <td>{{t.screening.date}}</td>
+            <td>{{t.screening.movie.price}}</td>
+        </tr>
+        <tr>
+            <td colspan="4">Total Amount:</td>
+            <td>{{totalSum()}}</td>
+        </tr>
+    </table>
+    <form [formGroup]="amount" (ngSubmit)="pay()">
+        <input type="number" formControlName="a">
+        <button type="submit">Pay</button>
+    </form>
+</div>

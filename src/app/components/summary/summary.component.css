@@ -1,0 +1,13 @@
+.table {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.table-row {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+.table-column{
+    align-self: center;
+}

@@ -30,8 +30,6 @@ export class AddTicketResolverGuard implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<any> {
     return forkJoin(
-      this.loginService.currentUser,
-      this.movieService.currentMovie,
       this.screeningService.getAllScreeningsWithMovie(this.movieService.getCurrentMovie()),
       this.showtimeService.getAllShowTimes(),
       this.theatreService.getAllTheatres(),
@@ -40,12 +38,10 @@ export class AddTicketResolverGuard implements Resolve<any> {
       map(
         data => {
           return {
-            user: data[0],
-            movie: data[1],
-            screenings: data[2],
-            showtimes: data[3],
-            theatres: data[4],
-            tickets: data[5]
+            screenings: data[0],
+            showtimes: data[1],
+            theatres: data[2],
+            tickets: data[3]
           };
         }
       )

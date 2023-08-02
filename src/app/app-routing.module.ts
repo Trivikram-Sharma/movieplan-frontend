@@ -45,6 +45,10 @@ import { CartComponent } from './components/cart/cart.component';
 import { CartResolverGuard } from './guards/cartResolver/cart-resolver.guard';
 import { EditticketComponent } from './components/editticket/editticket.component';
 import { EditTicketResolverGuard } from './guards/editTicketResolver/edit-ticket-resolver.guard';
+import { TicketService } from 'src/services/ticket/ticket.service';
+import { PaymentComponent } from './components/payment/payment.component';
+import { SummaryComponent } from './components/summary/summary.component';
+import { SummaryResolverGuard } from './guards/summaryResolver/summary-resolver.guard';
 const routes: Routes = [
   {path:"", redirectTo:"home",pathMatch:"full"},
   {path:"home", component:HomeComponent},
@@ -127,9 +131,20 @@ const routes: Routes = [
       },
       {
         path: "cart",
-        component: CartComponent,
+        component: CartComponent
+        // resolve: {
+        //   data: CartResolverGuard
+        // }
+      },
+      {
+        path: "payment",
+        component: PaymentComponent
+      },
+      {
+        path: "summary",
+        component: SummaryComponent,
         resolve: {
-          data: CartResolverGuard
+          data: SummaryResolverGuard
         }
       }
   ]},
@@ -143,7 +158,8 @@ const routes: Routes = [
 TheatreResolverGuard, TheatreService,
 AddScreeningResolveGuard,ScreeningService,
 AddTicketResolverGuard,CartService,
-CartResolverGuard, EditTicketResolverGuard],
+CartResolverGuard, EditTicketResolverGuard,TicketService,
+SummaryResolverGuard],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

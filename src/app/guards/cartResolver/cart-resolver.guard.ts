@@ -22,14 +22,14 @@ export class CartResolverGuard implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<any> {
     return forkJoin(
-      this.cartService.getCurrentTickets(),
-      this.loginService.currentUser
+      
+      []
     ).pipe(
       map(
         data => {
           return {
-            currentTickets: data[0],
-            currentUser: data[1]
+            currentTickets: this.cartService.getCurrentTickets(),
+            currentUser: this.loginService.currentUser
           };
         }
       )

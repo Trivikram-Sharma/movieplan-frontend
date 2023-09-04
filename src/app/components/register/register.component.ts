@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
         userName: <String>this.username?.value,
         password: <String>this.userpassword?.value,
         status: "inactive",
-        name: <String>this.name?.value,
+        fullName: <String>this.name?.value,
         email: <String>this.email?.value
       };
       this.registrationService.signUp(user)

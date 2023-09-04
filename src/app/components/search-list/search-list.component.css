@@ -1,0 +1,15 @@
+dl {
+    text-align: center;
+}
+dt{
+    background-color: gray;
+    color: yellow;
+}
+#filters-present,#sort-field,#sort-order{
+    background-color: yellow;
+    color: blue;
+}
+dd{
+    background-color: white;
+    color: brown;
+}

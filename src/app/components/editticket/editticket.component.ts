@@ -33,7 +33,7 @@ export class EditticketComponent implements OnInit {
     );
   }
   etF = new FormGroup({
-    user: new FormControl({value:this.currentTicket.user.name,disabled:true}),
+    user: new FormControl({value:this.currentTicket.user.fullName,disabled:true}),
     movie: new FormControl({value: this.currentTicket.screening.movie.title, disabled: true}),
     date: new FormControl(this.currentTicket.screening.date,Validators.required),
     showtime: new FormControl(this.currentTicket.screening.showTime.id,Validators.required),

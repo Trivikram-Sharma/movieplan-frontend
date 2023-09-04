@@ -44,30 +44,48 @@ export class PaymentComponent implements OnInit {
   }
   pay(){
     let p:Payment;
-    if(!this.amount.invalid && <number>parseInt(<string>this.amount.get('a')?.value)==this.totalSum()){
-      let ticketaddobservables
-      = this.currentTickets.map(
-        tk => this.ticketService.purchaseTicket(tk)
+    let pamount = <number>parseInt(<string>this.amount.get('a')?.value);
+    if(!this.amount.invalid && pamount==this.totalSum() && pamount!=0){
+          /*let ticketaddobservables
+          = this.currentTickets.map(
+            tk => this.ticketService.purchaseTicket(tk)
+          );
+        forkJoin(ticketaddobservables)
+        .subscribe(
+          (ticketsaved:boolean[]) => {
+            let failedSaves:boolean[] = ticketsaved.filter(t => t==false);
+            console.log(failedSaves);
+            if(failedSaves.length > 0){
+              alert(`Some of the tickets have failed to be saved! Please check the ticket objects.`);
+            }
+            else if(failedSaves.length == 0){
+              this.paymentService.setCurrentAmount(<number>parseInt(<string>this.amount.get('a')?.value));
+              this.router.navigate(['/servicesList/summary']);
+            }
+            else {
+              alert(`Something went wrong when saving the tickets! Please check the ddatabase.`);
+            }
+          }
+        );*/
+      let p:Payment
+      = {
+        user: this.currentUser,
+        tickets: this.currentTickets,
+        amount: <number>parseInt(<string>this.amount.get('a')?.value)
+      };
+      this.paymentService.addPayment(p)
+      .subscribe(
+        (paymentSaved:Payment) => {
+          if(paymentSaved!=null){
+            this.paymentService.setCurrentPayment(paymentSaved);
+            this.router.navigate(['/servicesList/summary'])
+          }
+          else {
+            alert(`Payment NOT Saved!! Please check the database and verify!`);
+          }
+        }
       );
-    forkJoin(ticketaddobservables)
-    .subscribe(
-      (ticketsaved:boolean[]) => {
-        let failedSaves:boolean[] = ticketsaved.filter(t => t==false);
-        console.log(failedSaves);
-        if(failedSaves.length > 0){
-          alert(`Some of the tickets have failed to be saved! Please check the ticket objects.`);
-        }
-        else if(failedSaves.length == 0){
-          this.paymentService.setCurrentAmount(<number>parseInt(<string>this.amount.get('a')?.value));
-          this.router.navigate(['/servicesList/summary']);
-        }
-        else {
-          alert(`Something went wrong when saving the tickets! Please check the ddatabase.`);
-        }
-      }
-    );
-
-      
+          
     }
     else{
       alert(`The total amount is ${this.totalSum()}.

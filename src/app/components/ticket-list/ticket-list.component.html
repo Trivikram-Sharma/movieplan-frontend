@@ -1,15 +1,19 @@
-<a href="#" target="_top">Add Ticket</a>
-<table>
+<!-- <a href="#" target="_top">Add Ticket</a> -->
+<table *ngIf="userLoggedIn">
     <thead>
-        <td>Id</td>
-        <td>UserName</td>
-        <td>Movie</td>
-        <td>Price</td>
+        <th>Id</th>
+        <th>UserName</th>
+        <th>Movie</th>
+        <th>Theatre</th>
+        <th>Date</th>
+        <th>Price</th>
     </thead>
     <tr *ngFor="let t of ticketList">
-        <td><a href="#" target="_blank" (click)="showTicket(t.id)">{{t.id}}</a></td>
-        <td><a href="#">{{t.user}}</a></td>
-        <td><a href="#">{{t.screening.movie.title}}</a></td>
-        <td><a href="#">{{t.screening.movie.price}}</a></td>
+        <td>{{t.id}}</td>
+        <td>{{t.user.userName}}</td>
+        <td>{{t.screening.movie.title}}</td>
+        <td>{{t.screening.theatre.name}},{{t.screening.theatre.address.area}},{{t.screening.theatre.address.city}}</td>
+        <td>{{t.screening.date}}</td>
+        <td>{{t.screening.movie.price}}</td>
     </tr>
 </table>

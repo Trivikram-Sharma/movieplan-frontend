@@ -1,7 +1,15 @@
-table {
+table,th,tr,td {
     border: 1px solid darkorange;
     padding: 5px;
     margin: 5px;
     background-color: lightyellow;
+    color: crimson;
+}
+th {
+    background-color: orangered;
+    color: orange;
+}
+td {
+    background-color: white;
     color: crimson;
 }

@@ -3,20 +3,29 @@ import { TicketService } from 'src/services/ticket/ticket.service';
 import { Ticket } from 'src/interfaces/ticket';
 import { LoginService } from 'src/services/login/login.service';
 import { Admin } from 'src/interfaces/admin';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-ticket-list',
   templateUrl: './ticket-list.component.html',
   styleUrls: ['./ticket-list.component.css']
 })
 export class TicketListComponent implements OnInit {
-
-  constructor(private ticketService:TicketService, private loginService:LoginService) { }
+  
+  ticketList: Ticket[] = [];
+  constructor(private ticketService:TicketService,
+     private loginService:LoginService,
+     private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.data.forEach(
+      data => {
+        this.ticketList = data['ticketList'];
+      }
+    );
   }
   message:any;
-  //ticketList: Ticket[] = [];
-  adminLoggedIn:Admin = this.loginService.currentAdmin;
+  userLoggedIn:boolean = this.loginService.userLoggedIn;
+  /*adminLoggedIn:Admin = this.loginService.currentAdmin;
    get ticketList(){
     this.ticketService.getAllTicketsOfCurrentUser()
     .subscribe(
@@ -30,5 +39,5 @@ export class TicketListComponent implements OnInit {
       (data:Ticket) => this.message = data
     );
     return this.message;
-   }
+   }*/
 }

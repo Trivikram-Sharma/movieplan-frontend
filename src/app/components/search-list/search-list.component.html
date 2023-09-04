@@ -1,1 +1,19 @@
-<p>search-list works!</p>
+<dl *ngIf="userLoggedIn">
+    <div *ngFor="let s of searches">
+    <dt>Searched for a movie with {{s.searchType}} '{{s.searchKeyword}}'
+         <span *ngIf="s.filterSet" id="filters-present">With Following filters</span>, sorted by
+          <span id="sort-field">{{s.sortField}}</span>in <span id="sort-order">{{s.sortOrder=='ASC'? 'Ascending': 'Descending'}}order. </span></dt>
+    <dd *ngIf="s.filterSet">
+        <ul>
+            <li *ngIf="s.filterSet.title">Title : {{s.filterSet.title}}</li>
+            <li *ngIf="s.filterSet.language"> Language :{{s.filterSet.language}}</li>
+            <li *ngIf="s.filterSet.amountMax"> Maximum ticket price : {{s.filterSet.amountMax}}</li>
+            <li *ngIf="s.filterSet.genre">Genre : {{s.filterSet.genre}}</li>
+            <li *ngIf="s.filterSet.showName">showName: {{s.filterSet.showName}}</li>
+            <li *ngIf="s.filterSet.date">Date: {{s.filterSet.date}}</li>
+            <li *ngIf="s.filterSet.city">City: {{s.filterSet.city}}</li>
+            <li *ngIf="s.filterSet.state">State: {{s.filterSet.state}}</li>
+        </ul>
+    </dd>
+    </div>
+</dl>

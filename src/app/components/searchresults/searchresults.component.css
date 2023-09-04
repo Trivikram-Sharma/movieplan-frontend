@@ -1,0 +1,9 @@
+table,th,tr,td {
+    border: 1px solid crimson;
+}
+.movie-info {
+    display: none;
+}
+.movie-link:hover .movie-info{
+    display: block;
+}

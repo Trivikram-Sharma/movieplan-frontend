@@ -1,0 +1,31 @@
+<div *ngIf="resultsPresent">
+    <table>
+        <tr>
+            <th>Movie</th>
+            <th>Language</th>
+            <th>Price</th>
+            <th>Genres</th>
+            <th>Theatre</th>
+            <th>ShowTime</th>
+            <th>Date</th>
+            <th>Book Ticket</th>
+        </tr>
+        <tr *ngFor="let s of getResultantScreenings()">
+            <td>
+                <span class="movie-link">{{s.movie.title}}</span>
+                <img class="movie-info" src="assets/movies/{{s.movie.fileName}}">
+            </td>
+            <td>{{s.movie.language}}</td>
+            <td>{{s.movie.price}}</td>
+            <td>{{getScreeningGenres(s)}}</td>
+            <td>{{s.theatre.name}}, {{s.theatre.address.area}}, {{s.theatre.address.city}}, {{s.theatre.address.state}}</td>
+            <td>{{s.showTime.showName}} ({{s.showTime.startTime}} to {{s.showTime.endTime}})</td>
+            <td>{{s.date}}</td>
+            <td><button (click)="bookParticularMovieTicket(s)">Book Ticket</button></td>
+        </tr>
+    </table>
+</div>
+
+<div *ngIf="!resultsPresent">
+    No Results Found.
+</div>

@@ -1,20 +1,19 @@
 
-<div class="table" *ngIf="userLoggedIn && payment.tickets.length!==0">
-    <div class="table-row">
-        <div class="table-column">Movie</div>
-        <div class="table-column">Theatre</div>
-        <div class="table-column">Showtime</div>
-        <div class="table-column">Date</div>
-        <div class="table-column">Price</div>
-    </div>
-    <hr />
-    <div class="table-column" *ngFor="let t of payment.tickets">
-        <div class="table-column">{{t.screening.movie.title}} ({{t.screening.movie.language}})</div>
-        <div class="table-column">{{t.screening.theatre.name}}, {{t.screening.theatre.address.area}}, {{t.screening.theatre.address.city}}</div>
-        <div class="table-column">{{t.screening.showTime.showName}} ({{t.screening.showTime.startTime}} to {{t.screening.showTime.endTime}})</div>
-        <div class="table-column">{{t.screening.date}}</div>
-        <div class="table-column">{{t.screening.movie.price}}</div>
-    </div>
-    <h4>Your payment of Rs. {{payment.amount}} is successful! Enjoy your upcoming booked movies!</h4>
-    <h5>Click <a routerLink="/home">Here</a> to go back to your home page.</h5>
-</div>
+<table *ngIf="userLoggedIn && payment!=null">
+    <tr>
+        <th>Movie</th>
+        <th>Theatre</th>
+        <th>Showtime</th>
+        <th>Date</th>
+        <th>Price</th>
+    </tr>
+    <tr *ngFor="let t of payment.tickets">
+        <td>{{t.screening.movie.title}} ({{t.screening.movie.language}})</td>
+        <td>{{t.screening.theatre.name}}, {{t.screening.theatre.address.area}}, {{t.screening.theatre.address.city}}</td>
+        <td>{{t.screening.showTime.showName}} ({{t.screening.showTime.startTime}} to {{t.screening.showTime.endTime}})</td>
+        <td>{{t.screening.date}}</td>
+        <td>{{t.screening.movie.price}}</td>
+    </tr>
+</table>
+<h4>Your payment of Rs. {{payment.amount}} is successful! Enjoy your upcoming booked movies!</h4>
+<h5>Click <a routerLink="/home">Here</a> to go back to your home page.</h5>

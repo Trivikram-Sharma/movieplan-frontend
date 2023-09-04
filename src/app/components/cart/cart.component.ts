@@ -30,6 +30,7 @@ export class CartComponent implements OnInit {
   currentUser:User = this.loginService.currentUser;
   loggedin:boolean = this.loginService.loggedin;
   editTicket(ct:Ticket){
+    this.cartService.setCurrentIndex(this.cartService.getCurrentTickets().indexOf(ct));
     this.router.navigate(['/servicesList/editTicket']);
   }
   removeTicket(ct:Ticket){

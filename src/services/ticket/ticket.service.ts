@@ -29,6 +29,9 @@ export class TicketService {
   getTicketById(id:string){
     return this.httpClient.get<Ticket>(ticketapi.ticketById + `?id=${id}`);
   }
+  getTicketsByUser(user:User){
+    return this.httpClient.get<Ticket[]>(ticketapi.ticketByUser + `?userId=${user.userName}`);
+  }
   getAllTickets(){
     return this.httpClient.get<Ticket[]>(ticketapi.allTickets);
   }

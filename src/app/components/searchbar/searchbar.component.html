@@ -1,28 +1,79 @@
 <form [formGroup]="searchForm" (ngSubmit)="submit()" class="searchForm">
-    <select (onchange)="changeEntity()" class="form-control" formControlName="searchEntity" aria-placeholder="Select Entity">
-        <option value="ADDRESS">Address</option>
+    <select (change)="changeEntity()" class="form-control" formControlName="searchEntity" aria-placeholder="Select Entity">
+        <!-- <option value="ADDRESS">Address</option>
         <option value="MOVIE">Movie</option>
         <option value="THEATRE">Theatre</option>
         <option value="GENRE">Genre</option>
-        <option value="SHOWTIME">Showtime</option>
+        <option value="SHOWTIME">Showtime</option> -->
+        <option value="title">Movie Title</option>
+        <option value="language">Language</option>
+        <option value="genre">Genre</option>
+        <option value="city">City</option>
+        <option value="state">State</option>
     </select>
-    <input type="search" class="form-control" formControlName="searchBox">
+    <input type="search" class="form-control" formControlName="searchBox" [placeholder]=placeholderText>
     <span (click)="showFilters(searchForm.get('searchEntity')?.value)" class="form-control" id="FiltersIcon">Filters</span>
     <span id="sortBy">Sort By : </span> 
-    <select formControlName="sortBy" (onchange)="setSortField()">
-            <option value="s" *ngFor="let s of sortFieldList">{{s}}</option>
+    <select formControlName="sortBy" (change)="setSortField()">
+            <option value="{{s}}" *ngFor="let s of sortFieldList">{{s}}</option>
     </select>
     <span (click)="toggle()" class="form-control" id="sortButton">Sort - {{sort}}</span>
     <button type="submit">Search</button>
 </form>
+<span (click)="clearAllFilters()" id="clear-filters">Clear All Filters X</span>
 <br>
 <form [formGroup]="filterForm" (ngSubmit)="applyFilters()" id="filterForm" [style.display]="filterShow? 'flex':'none'">
-    <div class="filter-group" *ngFor="let f of filterControls">
+    <!-- <div class="filter-group" *ngFor="let f of filterControls">
         <label>{{f}}</label>
         <input type="text" [formControlName]="f" class="form-control" value="">
-    </div>
+    </div> -->
+        <div class="filter-group">
+            <label>Movie Title</label>
+            <input type="text" formControlName="title">
+        </div>
+        <div class="filter-group">
+            <label>Language</label>
+            <select formControlName="language">
+                <option value="Telugu">Telugu</option>
+                <option value="Kannada">Kannada</option>
+                <option value="Tamil">Tamil</option>
+                <option value="Malayalam">Malayalam</option>
+                <option value="Hindi">Hindi</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Maximum Price</label>
+            <input type="number" formControlName="amountMax" value="0">
+        </div>
+        <div class="filter-group">
+            <label>Genre</label>
+            <input type="text" formControlName="genre">
+        </div>
+        <div class="filter-group">
+            <label>ShowName</label>
+            <select formControlName="showName">
+                <option value="Morning Show">Morning Show</option>
+                <option value="Matinee Show">Matinee Show</option>
+                <option value="First Show">First Show</option>
+                <option value="Second Show">Second Show</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Date</label>
+            <input type="date" formControlName="date">
+        </div>
+        <div class="filter-group">
+            <label>Theatre City</label>
+            <input type="text" formControlName="city">
+        </div>
+        <div class="filter-group">
+            <label>Theatre State</label>
+            <input type="text" formControlName="state">
+        </div>
     <button type="submit" id="apply-filters">Apply Filters</button>
 </form>
+
+<app-searchresults [screeningList]="getResultScreenings()" [userTickets]="userTickets"></app-searchresults>
 <pre>
     
 </pre>

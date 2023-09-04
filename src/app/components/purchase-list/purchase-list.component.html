@@ -1,1 +1,23 @@
-<p>purchase-list works!</p>
+
+<table *ngIf="userLoggedIn">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>User</th>
+            <th>Number of Tickets</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of payments">
+            <td>{{p.id}}</td>
+            <td>{{p.user.userName}}</td>
+            <td>{{getNumberOfTickets(p)}}</td>
+            <td>{{p.amount}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="!loggedin">
+    No User/Admin Logged In. Thus, No data to be displayed.
+</div>

@@ -11,6 +11,7 @@
            <li *ngIf="adminLoggedin"><a routerLink="/servicesList/theatreList">Theatres</a></li>
            <li *ngIf="adminLoggedin"><a routerLink="/servicesList/screeningList">Screenings</a></li>
            <li *ngIf="loggedin"><a routerLink="/servicesList/cart">Cart</a></li>
+           <li *ngIf="loggedin"><a routerLink="/servicesList/searchBar">Search</a></li>
         </ul>
     </div>
 
@@ -21,8 +22,8 @@
             <li>Movie 3</li>
             <li>Movie 4</li>
             <li>Movie 5</li>
-        </ul> -->
-        <app-searchbar></app-searchbar><br />
+        </ul> 
+        <app-searchbar></app-searchbar>--><br />
         <router-outlet></router-outlet>
     </div>
 </div>

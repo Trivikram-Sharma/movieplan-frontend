@@ -2,6 +2,6 @@ export interface User {
     userName:String;
     password:String;
     status:String;
-    name?:String;
+    fullName?:String;
     email?:String;
 }

@@ -38,7 +38,7 @@ export class PaymentService {
   //PUT APIs
 
   addPayment(p:Payment){
-    return this.httpClient.put<boolean>(paymentapi.addPayment,p);
+    return this.httpClient.put<Payment>(paymentapi.addPayment,p);
   }
 
   //PATCH APIs

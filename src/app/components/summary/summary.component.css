@@ -1,13 +1,10 @@
-.table {
-    display: flex;
-    flex-direction: column;
+.table,th,tr,td {
     text-align: center;
+    border: 1px solid red;
 }
-.table-row {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
+th {
+    background-color: crimson;
 }
-.table-column{
-    align-self: center;
+td {
+    background-color: yellow;
 }

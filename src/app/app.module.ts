@@ -49,6 +49,7 @@ import { EditticketComponent } from './components/editticket/editticket.componen
 import { CartService } from 'src/services/cart/cart.service';
 import { PaymentComponent } from './components/payment/payment.component';
 import { SummaryComponent } from './components/summary/summary.component';
+import { SearchresultsComponent } from './components/searchresults/searchresults.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { SummaryComponent } from './components/summary/summary.component';
     CartComponent,
     EditticketComponent,
     PaymentComponent,
-    SummaryComponent
+    SummaryComponent,
+    SearchresultsComponent
   ],
   imports: [
     BrowserModule,

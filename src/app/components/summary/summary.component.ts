@@ -18,6 +18,7 @@ export class SummaryComponent implements OnInit {
   ticketList: Ticket[] = [];
   screeningList: Screening[] = [];
   payment:any;
+  savedTickets:boolean[] = [];
   constructor(private loginService:LoginService,
     private screeningService:ScreeningService,
     private ticketService: TicketService,
@@ -29,11 +30,15 @@ export class SummaryComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.forEach(
       data => {
-        this.ticketList = data['tickets'];
-        this.screeningList = data['screenings'];
+        this.ticketList = data['data']['tickets'];
+        this.screeningList = data['data']['screenings'];
+        this.savedTickets = data['data']['savedTickets'];
       }
-    );
-    let savedTickets:Ticket[]
+      );
+      console.log('ticketList ->',this.ticketList);
+      console.log('screeningList ->',this.screeningList);
+      console.log('savedTickets->',this.savedTickets);
+    /*let savedTickets:Ticket[]
     = this.cartService.getCurrentTickets()
     .map(
       crudeTicket => {
@@ -50,11 +55,11 @@ export class SummaryComponent implements OnInit {
             };
           }
          }
-    );
-    if(savedTickets.length == this.cartService.getCurrentTickets().length){
-      let unsavedTickets:Ticket[] = savedTickets.filter(ut => ut.id == -1);
+    );*/
+    if(this.savedTickets.length == this.cartService.getCurrentTickets().length){
+      let unsavedTickets:boolean[] = this.savedTickets.filter(ut => ut == false);
       if(unsavedTickets.length == 0){
-        let p:Payment
+        /*let p:Payment
         = {
           user: this.loginService.currentUser,
           tickets: savedTickets,
@@ -69,6 +74,15 @@ export class SummaryComponent implements OnInit {
             else {
               alert(`The payment is NOT Saved Successfully!`);
             }
+          }
+        );*/
+        alert(`Tickets Purchased Successfully!`);
+        this.payment = this.paymentService.getCurrentPayment();
+        this.ticketService.getTicketsByPaymentId(this.payment)
+        .subscribe(
+          (successfulTickets:Ticket[]) => {
+            this.payment.tickets = successfulTickets;
+            this.cartService.setCurrentTickets([]);
           }
         );
       }

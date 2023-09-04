@@ -1,0 +1,11 @@
+table,th,tr,td{
+    border: 1px solid crimson;
+}
+
+th{
+    background-color: brown;
+}
+td {
+    background-color: royalblue;
+    color: white;
+}

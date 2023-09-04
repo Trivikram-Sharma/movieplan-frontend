@@ -41,7 +41,7 @@ export class AddticketComponent implements OnInit {
     );
   }
   atF = new FormGroup({
-    user: new FormControl({value:this.currentUser.name,disabled:true}),
+    user: new FormControl({value:this.currentUser.fullName,disabled:true}),
     movie: new FormControl({value: this.currentMovie.title, disabled: true}),
     date: new FormControl('',Validators.required),
     showtime: new FormControl('',Validators.required),
@@ -70,12 +70,19 @@ export class AddticketComponent implements OnInit {
     }
     else if(resultantScreenings.length == 1){
       selectedScreening = resultantScreenings[0];
-      t  = {
-        user: this.currentUser,
-        screening: selectedScreening
-      };
-      this.cartService.addTicketToCart(t);
-      this.router.navigate(['/servicesList/cart']);
+      let sh:Showtime = this.allShowtimeList.filter(st => st.id == parseInt(<string>this.atF.get('showtime')?.value))[0];
+      let th:Theatre = this.allTheatreList.filter(th => th.id == parseInt(<string>this.atF.get('theatre')?.value))[0];
+      let alreadyBooked = this.allMovieTicketList.filter(mt => mt.user.userName == this.currentUser.userName && mt.screening.id == selectedScreening.id).length;
+      if(alreadyBooked > 0){
+        alert(`You have already booked ticket for this movie at ${th.name}, on ${this.atF.get('date')}, ${sh.showName}`)
+      }else {
+        t  = {
+          user: this.currentUser,
+          screening: selectedScreening
+        };
+        this.cartService.addTicketToCart(t);
+        this.router.navigate(['/servicesList/cart']);
+      }
     }
     else {
       selectedScreening = resultantScreenings.reduce(
@@ -90,12 +97,21 @@ export class AddticketComponent implements OnInit {
           }
         }
         );
-        t  = {
-          user: this.currentUser,
-          screening: selectedScreening
-        };
-        this.cartService.addTicketToCart(t);
-        this.router.navigate(['/servicesList/cart']);
+        let sh:Showtime = this.allShowtimeList.filter(st => st.id == parseInt(<string>this.atF.get('showtime')?.value))[0];
+        let th:Theatre = this.allTheatreList.filter(th => th.id == parseInt(<string>this.atF.get('theatre')?.value))[0];
+        let alreadyBooked = this.allMovieTicketList.filter(mt => mt.user.userName == this.currentUser.userName && mt.screening.id == selectedScreening.id).length;
+        if(alreadyBooked > 0){
+          alert(`You have already booked ticket for this movie at ${th.name}, on ${this.atF.get('date')}, ${sh.showName}`);
+        }
+        else {
+          t  = {
+            user: this.currentUser,
+            screening: selectedScreening
+          };
+          this.cartService.addTicketToCart(t);
+          this.router.navigate(['/servicesList/cart']);
+
+        }
     }
   }
 }

@@ -49,6 +49,12 @@ import { TicketService } from 'src/services/ticket/ticket.service';
 import { PaymentComponent } from './components/payment/payment.component';
 import { SummaryComponent } from './components/summary/summary.component';
 import { SummaryResolverGuard } from './guards/summaryResolver/summary-resolver.guard';
+import { PurchaseHistoryResolverGuard } from './guards/purchaseHistoryResolver/purchase-history-resolver.guard';
+import { TicketListResolverGuard } from './guards/ticketListResolver/ticket-list-resolver.guard';
+import { ServiceResolverGuard } from './guards/serviceResolver/service-resolver.guard';
+import { SearchresultsComponent } from './components/searchresults/searchresults.component';
+import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { SearchListResolverGuard } from './guards/searchListResolver/search-list-resolver.guard';
 const routes: Routes = [
   {path:"", redirectTo:"home",pathMatch:"full"},
   {path:"home", component:HomeComponent},
@@ -56,16 +62,37 @@ const routes: Routes = [
   {path:"contact", component: ContactusComponent},
   {path:"register",component:RegisterComponent},
   {path:"changepassword",component:ChangepasswordComponent},
-  {path:"servicesList", component: ServiceComponent,
+  {path:"servicesList",
+   component: ServiceComponent,
   children:[
-    {path:"ticketList",component:TicketListComponent},
+    {path:"ticketList",
+    component:TicketListComponent,
+    resolve: {
+      ticketList: TicketListResolverGuard
+    }},
     {path:"movieList",
       component:MovieListComponent,
       resolve: {
         movieObservable: MovieResolveGuard
       }},
-    {path:"purchaseHistory",component:PurchaseListComponent},
-    {path:"searchList", component:SearchListComponent},
+    {path:"purchaseHistory",
+    component:PurchaseListComponent,
+    resolve:{
+      data: PurchaseHistoryResolverGuard
+    }
+    },
+    {path:"searchList",
+     component:SearchListComponent,
+     resolve: {
+      data: SearchListResolverGuard
+     }
+    },
+    {path: "searchBar",
+      component: SearchbarComponent,
+      resolve: {
+        data: ServiceResolverGuard
+       }
+    },
     {path:"genreList",
       component:GenrelistComponent,
       resolve: {
@@ -159,7 +186,9 @@ TheatreResolverGuard, TheatreService,
 AddScreeningResolveGuard,ScreeningService,
 AddTicketResolverGuard,CartService,
 CartResolverGuard, EditTicketResolverGuard,TicketService,
-SummaryResolverGuard],
+SummaryResolverGuard, PurchaseHistoryResolverGuard,
+TicketListResolverGuard,ServiceResolverGuard,
+SearchListResolverGuard],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
